@@ -1,0 +1,43 @@
+package ch6;
+
+class MyException2 extends Exception{
+	public MyException2(){
+		super();
+	}
+	public MyException2(String msg){
+		super(msg);
+	}
+	public MyException2(Throwable cause){
+		super(cause);
+	}
+	public MyException2(String msg,Throwable cause){
+		super(msg,cause);
+	}	
+}
+class MyArray{
+	public String[] createArray(int length) throws MyException2{
+		if (length<0){
+			throw new MyException2("数组长度小于0，不合法");
+		}
+		return new String[length];
+		
+	}
+}	
+public class Demo10 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MyArray a=new MyArray();
+		
+		try{
+			a.createArray(-1);
+		}
+		catch(MyException2 e){
+			System.out.println(e);
+		}
+	}
+
+}

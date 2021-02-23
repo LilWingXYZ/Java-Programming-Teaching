@@ -1,0 +1,60 @@
+//Container_Exam.java Swing容器综合实例 
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+public class Container_Exam extends JFrame implements ActionListener{
+	static Container_Exam mainJFrame = new Container_Exam();
+static JLabel lbl=new JLabel();
+static JDialog diag=new JDialog(mainJFrame);   //创建隶属于mainJFrame的对话框diag
+  	static JButton bt_close=new JButton("关闭");
+  	static JButton bt_cancel=new JButton("取消");
+  	static MyWinListener wlist=new MyWinListener();  //创建监听者的对象wlist
+  	public static void main(String args[ ]){
+  		mainJFrame.setTitle("Swing容器综合实例应用!");
+  		mainJFrame.setBounds(120,50,300,300);
+  		mainJFrame.setLocationRelativeTo(null);
+//设置关闭动作         
+		mainJFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE );
+		Container container = mainJFrame.getContentPane();
+		container.setLayout(null);
+  		container.add(lbl); 
+container.setBackground(Color.yellow);
+lbl.setBounds(10,10,150,50);	     
+  		  	    
+  	     diag.setTitle("请选择......");
+  		diag.setSize(200,150);
+  		diag.setLayout(new FlowLayout(FlowLayout.CENTER,5,20));
+  		diag.add(bt_close);
+  		diag.add(bt_cancel);
+  		bt_close.addActionListener(mainJFrame);       //设置按钮的监听者为mainJFrame
+  		bt_cancel.addActionListener(mainJFrame);
+  		mainJFrame.addWindowListener(wlist);
+  		mainJFrame.setVisible(true);
+  	}
+    static class MyWinListener implements WindowListener{
+     	public void windowClosing(WindowEvent e)   //按窗口右上角关闭按钮时的处理事件
+     	{	diag.setLocationRelativeTo(null);     //设置对话框的位置
+     		diag.setVisible(true);               //显示对话框
+     	}
+     	public void windowOpened(WindowEvent e)         //打开窗口时的处理操作
+     	{ 	lbl.setText("打开窗口"); 	}
+     	public void windowActivated(WindowEvent e)      //激活窗口时的处理操作
+     	{	lbl.setText("窗口被激活");  }
+     	public void windowDeactivated(WindowEvent e)    //窗口失活时的处理操作
+     	{                                }              //空操作
+     	public void windowIconified(WindowEvent e)      //窗口由最小化时的处理操作
+     	{    mainJFrame.setTitle("窗口被最小化");  }
+     	public void windowDeiconified(WindowEvent e)    //还原窗口时的处理操作
+     	{   mainJFrame.setTitle("窗口被还原");    }
+     	public void windowClosed(WindowEvent e)         //关闭窗口后的处理操作
+     	{                                 }             //空操作
+    }
+    public void actionPerformed(ActionEvent e) {   //按对话框中按钮时的处理事件
+       JButton bt=(JButton)e.getSource();         //获取被单击的按钮
+       if(bt==bt_close) {                        //若单击的是关闭按钮
+    	  	diag.dispose();                       //关闭对话框
+    		mainJFrame.dispose();                //关闭窗口
+    		System.exit(0);
+    	  }
+   }
+}

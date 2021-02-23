@@ -1,0 +1,15 @@
+public class ArrayDemo{
+	static float AverageArray(float a[]){
+		float average=0;
+		int i;
+		for(i=0;i<a.length;i++){
+		    average=average+a[i];
+		}
+	     return average/a.length;
+	}
+	public static void main(String args[]){
+		float average,a[]={1,2,3,4,5};
+		average=AverageArray(a);
+		System.out.println("average="+average);  
+	}
+}

@@ -1,0 +1,45 @@
+//TalkServer.java
+import java.io.*;
+import java.net.*;
+
+public class TalkServer {
+	public static void main(String args[]) {
+		try {
+			ServerSocket server = null;
+			server = new ServerSocket(4700);
+			System.out.println("Started: " + server);
+			Socket socket = server.accept();//负责C/S通信的socket对象
+			System.out.println("server: " + socket);
+			//获取对应的Socket的输入输出流
+			BufferedReader is;
+			is = new BufferedReader(new InputStreamReader(
+                        socket.getInputStream()));
+			PrintWriter os = new PrintWriter(
+                        socket.getOutputStream());
+			File sourceFile;
+			BufferedReader source;
+			System.out.println("等待客户端的消息....");
+			String str = is.readLine();// 读取客户端传送的字符串
+			System.out.println("客户端" + str);//显示字符串
+			sourceFile = new File(str);
+			System.out.println("给客户端发送：");
+			try {
+				source = new BufferedReader(
+new FileReader(sourceFile));
+				while ((str = source.readLine()) != null) {
+					os.println(str);//向客户端发送消息
+				}
+				os.println("end");
+			} catch (FileNotFoundException e) {
+				System.out.println("文件不存在：" + e);
+				os.println("NotFile");
+			}
+			os.close();
+			is.close();
+			socket.close();
+			server.close();
+		} catch (Exception e) {
+			System.out.println("Error:" + e);
+		}
+	}
+}

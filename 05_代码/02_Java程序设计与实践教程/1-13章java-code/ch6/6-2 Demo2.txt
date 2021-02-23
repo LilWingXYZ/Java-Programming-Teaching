@@ -1,0 +1,37 @@
+package ch6;
+class mammal{
+	void speak(){
+		System.out.println("mammal speak.");
+	}
+}
+class Dog extends mammal{
+	void speak(){
+		System.out.println("wangwang...");
+	}
+}
+class Cat extends mammal{
+	void speak(){
+		System.out.println("miaomiao...");
+	}
+}
+public class Demo2{
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		mammal m;
+		m=new mammal();
+		m.speak();
+		
+		m=new Dog();
+		m.speak();
+	
+		m=new Cat();
+		m.speak();
+		
+	}
+
+}

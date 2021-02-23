@@ -1,0 +1,19 @@
+package ch7;
+
+public class StrConcat {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s1="Hello";
+	    String s2=s1+",";
+	    String s3=s2.concat(" Java");
+	    String s4=new String(" ! ");
+	    String s5=s4.concat(s4);
+	    System.out.println(" 连接而成的字符串是"+s5);
+
+	}
+
+}

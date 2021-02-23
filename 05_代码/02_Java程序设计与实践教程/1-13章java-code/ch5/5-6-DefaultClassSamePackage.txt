@@ -1,0 +1,7 @@
+package lession3;
+
+public class DefaultClassSamePackage{
+   public String  toString(){
+       return "相同package的默认类";
+   }  
+}

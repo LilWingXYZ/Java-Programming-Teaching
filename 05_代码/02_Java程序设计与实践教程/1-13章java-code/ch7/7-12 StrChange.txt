@@ -1,0 +1,22 @@
+package ch7;
+
+public class StrChange {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		StringBuffer s1=new StringBuffer("Hallo,Java!");
+	     s1.setCharAt(1, 'e');
+	     System.out.println(s1);
+	     s1.replace(1,5, "i");
+	     System.out.println(s1);
+	     s1.delete(0,3);
+	     System.out.println(s1);
+	     s1.deleteCharAt(4);
+	     System.out.println(s1);
+
+	}
+
+}

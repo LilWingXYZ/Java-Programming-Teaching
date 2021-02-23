@@ -1,0 +1,25 @@
+﻿import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+
+public class FlowLayout_Exam {
+
+	static JFrame mainJFrame = new JFrame("流式管理器FlowLayout类的应用示例!"); 
+public static void main(String args[ ]){
+		FlowLayout flow=new FlowLayout(FlowLayout.CENTER,5,10);
+		mainJFrame.setLayout(flow);                   //设置页面布局为FlowLayout
+		mainJFrame.setSize(300,200);
+		mainJFrame.setLayout(new FlowLayout());
+		mainJFrame.add(new JButton("JButton 1"));   //将按钮对象btn加入到窗口mainJFrame中
+		mainJFrame.add(new JButton("JButton 2"));
+		mainJFrame.add(new JButton("JButton 3"));
+		mainJFrame.add(new JButton("Long-Named JButton 4"));
+		mainJFrame.add(new JButton("5"));
+		mainJFrame.add(new JLabel("流式布局策略FlowLayout"));          //添加文本框标签组件
+		mainJFrame.add(new JTextField("流式布局策略FlowLayout",18));  //添加文本框组件
+		mainJFrame.setVisible(true);
+	  }
+
+
+}

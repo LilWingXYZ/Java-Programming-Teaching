@@ -1,0 +1,33 @@
+package ch7;
+
+import java.util.*;
+class BankCust{
+	    String name ;
+	    int id;
+	    BankCust(String name,int id){ 
+		  this.name=name;
+		  this.id=id;
+		}
+	}
+public class TimeDemo{  
+	public  static void main(String args[]){
+	    List list=new LinkedList();
+	    for(int k=1;k<=30000;k++){  
+	  	  list.add(new BankCust("Cust"+k,k)); 
+	    }
+	    Iterator iter=list.iterator();
+	    long time1=System.currentTimeMillis(); 
+	    while(iter.hasNext()){  
+	      BankCust cu=(BankCust)iter.next();
+	    }
+	    long time2=System.currentTimeMillis(); 
+	    System.out.println("遍历链表用时:"+(time2-time1)+"毫秒");
+	    time1=System.currentTimeMillis(); 
+	    for(int i=0;i<list.size();i++){  
+		  BankCust cu=(BankCust)list.get(i);
+		}
+	    time2=System.currentTimeMillis(); 
+	    System.out.println("遍历链表用时:"+(time2-time1)+"毫秒");
+	    }
+}
+

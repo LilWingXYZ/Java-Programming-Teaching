@@ -1,0 +1,74 @@
+package ch5;
+
+class Cust4 {
+	String name;
+	int ID;
+	String PWD;
+	int money;
+	static String bankName="建设银行";
+	int selfNum=0;
+	static int allNum=0;
+
+	Cust4(){
+		name = "";
+		ID = 0;
+		PWD = "";
+		money = 0;
+		allNum++;
+		selfNum=allNum;
+	}
+	Cust4(String newName,int newID,String newPWD,int newmoney){
+		name = newName;
+		ID = newID;
+		PWD = newPWD;
+		money = newmoney;
+		allNum++;
+		selfNum=allNum;
+	}
+	void getMoney(int getMoney){
+		money = money - getMoney;
+	}
+	void setMoney(int saveMoney){
+		money = money + saveMoney;
+	}
+	void search(){
+		System.out.println("所属银行:"+Cust4.bankName);
+		System.out.println("您是本银行的"+allNum+"个顾客中的第"+selfNum+"个顾客");
+		System.out.println("用户姓名："+name);
+		System.out.println("用户账号："+ID);
+		System.out.println("账户余额："+money);
+	}
+	void changePWD(String newPWD){
+		PWD = newPWD;
+	}
+	void setInfo(String newName,int newID,String newPWD,int newmoney)
+	{
+		name = newName;
+		ID = newID;
+		PWD = newPWD;
+		money = newmoney;
+	}
+}
+public class Demo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Cust4 st1 = new Cust4("Tom",100,"11111",10000);
+		Cust4 st2 = new Cust4();
+		
+		st1.setMoney(5000);
+		st1.getMoney(3000);
+		st1.changePWD("Tom");
+		st1.search();
+		
+		st2.setInfo("Jerry", 200, "22222", 10000);
+		st2.setMoney(10000);
+		st2.getMoney(5000);
+		st2.changePWD("Jerry");
+		st2.search();
+	}
+
+}

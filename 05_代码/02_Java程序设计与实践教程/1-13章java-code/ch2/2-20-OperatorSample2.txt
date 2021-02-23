@@ -1,0 +1,9 @@
+public class  OperatorSample2  {   
+  public static void main(String args[]){ 
+     int  x=0;
+     boolean  isFalse=false;
+     System.out.println("x="+x);
+     x=isFalse?4:7;
+     System.out.println("x="+x);
+   }
+}

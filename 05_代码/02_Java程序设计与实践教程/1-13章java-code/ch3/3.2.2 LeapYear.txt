@@ -1,0 +1,34 @@
+package ch3;
+import  java.io.*; 
+public class LeapYear {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//下面7行语句的作用是从键盘输入年份存放到变量year中
+	    InputStreamReader  ir;
+	    BufferedReader   in;
+	    ir=new InputStreamReader(System.in);
+	    in=new BufferedReader(ir);
+	    System.out.println("Input year is: ");
+	    String s;
+		try {
+			s = in.readLine();
+		
+	    int  year=Integer.parseInt(s);
+	    // 下面用if-else结构判断year中的年份是否为闰年
+	    if (year % 4 ==0 && year % 100 !=0 || year % 400 ==0){
+	       System.out.println("year"+year+"is a leap year.");
+	    }
+		  else{
+		     System.out.println("year"+year+"is not a leap year.");
+		  }
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

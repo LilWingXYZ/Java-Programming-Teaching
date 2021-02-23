@@ -1,0 +1,32 @@
+package ch6;
+
+public class CustDemo1 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Cust1 st = new Cust1("Tom",100,"12345",10000);
+		VIPCust1 vst = new VIPCust1("Jerry",101,"12345",10000);
+		while (true)
+		{
+			System.out.print("请输入您的ID：");
+		    int ID = Integer.parseInt(KB1.scan());
+		    if(ID == st.getID())
+		    {
+		    	st.run();			
+			}
+		    else if(ID == vst.getID())
+		    {
+		    	vst.run();			
+			}
+			System.out.print("是否退出系统（Y/N）");
+			String str=KB1.scan();
+			if(str.equals("Y")||str.equals("y"))
+				break;
+			
+		}
+	}
+
+}

@@ -1,0 +1,26 @@
+import java.util.LinkedList;
+import java.util.List;
+public class LinkedListDemo{
+  public static void main(String[] args) {
+    LinkedList list = new LinkedList();
+    list.add("1");
+    list.add("2");
+    list.add("3");
+    list.add("4");
+    list.add("5");
+    System.out.println("LinkedList:"+list);
+    System.out.println("getFirst():" + list.getFirst());
+    System.out.println("getLast():" + list.getLast());
+    list.addFirst("firstElement");
+    list.addLast("lastElement");        //等同add()
+    System.out.println("addFirst() and addLast():" + list.toString());
+    list.add(2, "addElement");
+    System.out.println("add(2,addElement):"+list);    
+    list.remove(2); 
+    System.out.println("remove(2):"+list);
+    list.removeFirst();               //删除列表的首位元素
+    list.removeLast(); 
+    System.out.println("removeFirst() and removeLast():"+list); 
+    System.out.println("indexOf(2):"+list.indexOf("2"));
+  }
+}

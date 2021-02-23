@@ -1,0 +1,37 @@
+package ch6;
+class Outer{
+	private String outstr;
+	Outer(String s){
+		outstr=s;
+	}
+	public void outMethod(){
+		Inner in =new Inner();
+		System.out.println("outMethod访问："+in.inStr);
+		in.inMethod();
+	}
+	class Inner{
+		public String inStr="内部类的变量";
+		public void inMethod(){
+			System.out.println("inMethod访问："+inStr);
+				
+		}
+	}
+}
+public class Demo5{
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Outer o=new Outer("外部类的变量");
+		o.outMethod();
+		
+		Outer.Inner i=o.new Inner();
+		System.out.println("其它类访问："+i.inStr);
+		System.out.println("其它类访问：");
+		i.inMethod();		
+	}
+
+}

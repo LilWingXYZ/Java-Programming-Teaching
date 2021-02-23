@@ -1,0 +1,12 @@
+public class getPropertiesDemo {
+	public static void main(String[] args){
+		String osName = System.getProperty("os.name");
+		String user = System.getProperty("user.name");        
+		String javaVersion = System.getProperty("java.version");        
+		String javaHome = System.getProperty("java.home");
+		System.out.println("当前操作系统是：" + osName);
+		System.out.println("当前用户是："+ user);
+		System.out.println("运行时环境版本：" + javaVersion);        
+		System.out.println("Java安装目录：" + javaHome);
+	}
+}

@@ -1,0 +1,6 @@
+public class WelcomeDemo{
+     public static void main(String[] s){
+	{
+	  System.out.println("欢迎来到Java的世界...");
+	}
+}

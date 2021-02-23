@@ -1,0 +1,18 @@
+package ch7;
+
+public class StrLen {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		StringBuffer s1=new StringBuffer("Hello,Java!");
+	    System.out.println("长度："+s1.length( ));
+	    System.out.println("容量："+s1.capacity( ));
+	    s1.setLength(100);
+	    System.out.println("新长度："+s1.length( ));
+
+	}
+
+}

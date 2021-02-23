@@ -1,0 +1,77 @@
+package ch7;
+
+import java.io.*;
+import java.util.*;
+
+class Cust {
+    String name;
+    int ID;
+    String PWD;
+    int money;
+    int selfNum=0;
+    static int allNum=0;
+
+    Cust(){
+	  name = "";
+   	  ID = 0;
+	  PWD = "";
+	  money = 0;
+	  allNum++;
+	  selfNum=allNum;
+    }
+    Cust(String newName,int newID,String newPWD,int newmoney){
+	  name = newName;
+	  ID = newID;
+	  PWD = newPWD;
+	  money = newmoney;
+	  allNum++;
+	  selfNum=allNum;
+    }
+}
+
+public class ListArrayDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String name,pwd;
+        int id,rest;
+        Cust cu1,cu2;
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        ArrayList list=new ArrayList();
+        for(int i=0;i<5;i++){
+          System.out.println("请输入顾客姓名、账号、密码及余额:");
+        try {
+        	name=br.readLine();
+        	id=Integer.parseInt(br.readLine());
+        	pwd=br.readLine();
+        	rest=Integer.parseInt(br.readLine());
+        	list.add(new Cust(name,id,pwd,rest));
+	  	  } 
+          catch (IOException e) {
+        	e.printStackTrace();
+		  }
+        }
+        System.out.println("利用迭代器遍历集合元素");
+        //获取list对象的迭代器对象
+        Iterator ite=list.iterator();
+        System.out.println("姓名\t账号\t密码\t余额\t账户流水号\t账户总数");
+        //利用hasNext()方法判断iter迭代器是否结束
+        while(ite.hasNext()){
+        	cu1=(Cust)ite.next();
+        	System.out.print(cu1.name+"\t"+cu1.ID+"\t"+cu1.PWD+"\t"+cu1.money);
+        	System.out.println("\t"+cu1.selfNum+"\t"+cu1.allNum);
+       }
+        System.out.println("************************************");
+        System.out.println("直接遍历集合元素");
+        System.out.println("姓名\t账号\t密码\t余额\t账户流水号\t账户总数");
+        //利用size()方法获取集合长度
+        for(int i=0;i<list.size();i++){
+        	cu2=(Cust)(list.get(i));
+            System.out.println(cu2.name+"\t"+cu2.ID+"\t"+cu2.PWD+"\t"+cu2.money);
+	    }
+	}
+
+}

@@ -1,0 +1,9 @@
+public class  MultiByTwo{
+  public static volid main(String args[]) {
+      int i;
+	int  num=0Xffffffe;
+	for (i=0; i<4;i++){ 
+	  num=num<<1;
+	  System.out.println(num);
+  }
+}

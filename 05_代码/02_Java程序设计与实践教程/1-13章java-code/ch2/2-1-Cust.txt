@@ -1,0 +1,8 @@
+class Cust          // Cust类
+{
+   // 定义属性成员
+   String name;    // 字符串
+   int ID;          // 整型变量
+   String PWD;     // 字符串
+   int money;      // 整型变量
+}

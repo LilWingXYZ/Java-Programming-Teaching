@@ -1,0 +1,13 @@
+void initCust(String newName,int newID,String newPWD,int newmoney)
+	{
+		name = newName;
+		ID = newID;
+		PWD = newPWD;
+		money = newmoney;		
+	}
+	void printCust()
+	{
+		System.out.println("用户姓名："+name);
+		System.out.println("用户账号："+ID);
+		System.out.println("账户余额："+money);
+	}

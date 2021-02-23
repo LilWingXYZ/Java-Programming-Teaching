@@ -1,0 +1,33 @@
+// ==================== Program Discription ========================
+// 程序名称：WriteThread.java
+// 程序目的：向Socket中写字符串的线程
+// ==============================================================
+package drawing;
+import java.net.*;
+import java.io.*;
+import java.io.PrintWriter;
+  public class WriteThread extends Thread {
+  private Socket socket;
+  private Draw dr;
+  public WriteThread(Socket socket,Draw dr) {
+    this.socket=socket;
+    this.dr=dr;
+  }
+  public void run(){
+     try {
+      PrintWriter out=new PrintWriter(socket.getOutputStream(), true);
+      while (true){
+       if(dr.end) {
+      System.out.println("begin send text");
+      String send ="text"+","+dr.mes.getText();
+      dr.lst.add(dr.mes.getText());
+      out.println(dr.mes.getText());
+      dr.end=false;
+      }
+     }
+}
+    catch (Exception ex) {
+      ex.printStackTrace();
+    }
+  }
+}

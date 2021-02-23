@@ -1,0 +1,15 @@
+public class Cust3{
+  Cust3(){
+		name = "";
+		ID = 0;
+		PWD = "";
+		money = 0;
+	}
+  Cust3(String newName,int newID,String newPWD,int newmoney){
+		name = newName;
+		ID = newID;
+		PWD = newPWD;
+		money = newmoney;
+	}
+
+}

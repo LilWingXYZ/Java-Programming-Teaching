@@ -1,0 +1,31 @@
+package ch3;
+
+import java.io.*;
+
+public class IntTurn {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 */
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		int  x;     //x用来存放由键盘键入的正整数
+		// 下面7行语句的作用是从键盘输入x的值
+		InputStreamReader  ir;
+		BufferedReader  in;
+		ir=new InputStreamReader(System.in);
+		in=new BufferedReader(ir);
+		System.out.println("Input x is:");
+		String s=in.readLine();
+		x=Integer.parseInt(s);
+		//下面用do-while循环结构进行反转输出
+		do{
+		  System.out.println(x%10);     //除以10取余数输出
+		  x/=10;         // 将x刷新为除以10的商
+		} while (x!=0);     // 如x(商数)为0则结束循环
+		System.out.print("\n");
+
+	}
+
+}

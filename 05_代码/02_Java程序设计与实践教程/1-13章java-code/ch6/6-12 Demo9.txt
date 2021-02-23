@@ -1,0 +1,33 @@
+package ch6;
+class MyException1 extends Exception{
+	public MyException1(){
+		super("×Ö·û´®Ì«¶Ì");
+	}
+	public void someMethod(String s) throws MyException1{
+		if(s.length()<=3){
+			throw new MyException1();
+		}
+		else{
+			System.out.println("×Ö·û´®³¤¶È·ûºÏ¹æ¶¨");
+		}
+	}
+}
+public class Demo9 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		try{
+			MyException1 my=new MyException1();
+			my.someMethod("adbbddds");
+			my.someMethod("11");
+		}
+		catch(MyException1 e){
+			System.out.println(e.getMessage());
+		}
+	}
+
+}

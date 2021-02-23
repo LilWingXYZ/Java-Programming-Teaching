@@ -1,0 +1,129 @@
+﻿import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class KeyAndMouse_Exam extends JFrame implements KeyListener{
+    	static Exam mainJFrame = new Exam();
+	//按键事件类所涉及的组件
+	static JTextField tf=new JTextField(15);
+	static JTextArea ta1=new JTextArea(7,22);
+	//鼠标事件类所涉及的组件
+	static JTextField tf1=new JTextField(20);
+	static JTextArea ta2=new JTextArea("",7,22);
+	static JButton btn=new JButton("拖动我");
+	static int px,py,ox,oy,offx,offy,x,y;
+	//工具面板
+	static JPanel mainpan=new JPanel();
+	static JPanel pan1=new JPanel();
+	static JPanel pan2=new JPanel();
+	static JPanel pan3=new JPanel();
+	static CardLayout card=new CardLayout(10,10);  //需将card定义为static类型
+	//按钮
+  	static JButton  but1=new JButton("键盘事件类");
+  	static JButton  but2=new JButton("鼠标事件类");
+  	public static void main(String args[ ]){
+		mainJFrame.setTitle("键盘和鼠标事件类综合应用");
+		mainJFrame.setLayout(new BorderLayout(10,10));
+	    	mainJFrame.setBackground(Color.lightGray);  
+		mainJFrame.setResizable(false);
+		mainJFrame.setLocationRelativeTo(null);
+		mainJFrame.setSize(300,230);
+	    
+	    mainpan.setBounds(20,20,300,230);
+	    mainpan.setLayout(card);
+	   	//按键组件
+	    pan1.setBounds(20,20,230,220);
+	    pan1.setFont(new Font("Helvetica",Font.BOLD,16));
+	    pan1.setBackground(Color.green);
+	    JLabel tlbl1=new JLabel("键盘事件类应用");
+	    tlbl1.setBounds(20,20,60,20);
+		pan1.add(tlbl1);
+	    tf.setBounds(60,20,60,20);
+		pan1.add(tf);
+		tf.addKeyListener(mainJFrame);    //设置mainJFrame为事件监听者并向tf组件注册
+	
+		
+		ta1.setEnabled(false);           //设置文本区为禁用状态
+        JScrollPane scrollPane1 = new JScrollPane(ta1);
+        scrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    	pan1.add(scrollPane1);
+	
+	    mainpan.add(pan1,"t1"); 
+	  
+	    pan2.setBounds(20,20,230,220);
+	    pan2.setFont(new Font("Helvetica",Font.BOLD,16));
+	    pan2.setBackground(Color.yellow);
+	    JLabel tlbl2=new JLabel("鼠标事件类应用");
+	    tlbl2.setBounds(20,20,60,20);
+     	pan2.add(tlbl2);
+    	//鼠标组件
+		btn.setBounds(90,20,90,20);
+		pan2.add(btn);
+	    
+	    ta2.setEnabled(false);           //设置文本区为禁用状态
+        ta2.setCaretPosition(ta1.getDocument().getLength());
+	    JScrollPane scrollPane2 = new JScrollPane(ta2);
+        scrollPane2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        pan2.add(scrollPane2);
+		btn.addMouseMotionListener(new MyBtnMouseMotionList());//设置监听者
+		btn.addMouseListener(new MyBtnMouseList());    //设置监听者
+	 
+	    mainpan.add(pan2,"t2"); 
+	    card.show(mainpan,"t1"); 
+	    
+	    pan3.setLayout(new GridLayout(1,2));   //将面板对象设置为1行2列的布局
+	    pan3.setBounds(20,200,230,20);
+	  	but1.addActionListener(new MyPageBtnListener());
+		but2.addActionListener(new MyPageBtnListener());
+		pan3.add(but1);
+	    pan3.add(but2);
+	     
+        mainJFrame.add("North",mainpan);
+        mainJFrame.add("South",pan3);
+ 		mainJFrame.setVisible(true);
+	}
+	  //按键事件类处理程序
+	 public void keyPressed(KeyEvent e) {  //按下按键时的处理操作
+	  	if(e.isActionKey()) ta1.append("你按的是Action键\n");
+	 	else  ta1.setText("KeyEvent事件发生，你按的是["+e.getKeyChar()+"键\n");
+	 }
+	 public void keyReleased(KeyEvent e) { //放开按键时的处理操作
+	  	ta1.append("你现在放开了按键\n");
+	 }
+	 public void keyTyped(KeyEvent e) { //输入字符时的处理操作
+	  	String input=tf.getText()+e.getKeyChar();  //取得tf中输入的内容
+	 	if(e.getKeyChar()=='\n') ta1.setText(input);
+	 }
+	 //鼠标事件类处理程序，定义静态内部类MyMouseList，并继承自MouseAdapter
+	 static class MyBtnMouseList extends MouseAdapter {
+	  	public void mousePressed(MouseEvent e) {   //鼠标按钮被按下时的处理操作
+	 		px=e.getX();        //取得鼠标按下时的x坐标
+	 		py=e.getY();         //取得鼠标按下时的y坐标
+	 		ox=btn.getLocation().x;   //取得btn的左边界距离窗口左边界的距离
+	 		oy=btn.getLocation().y;    //取得btn的上边界距离窗口上边界的距离
+	 	}
+	 }
+	 //定义静态内部类MyMouseMotionList，并继承自MouseMotionAdapter
+	 static class MyBtnMouseMotionList extends MouseMotionAdapter { 	
+      public void mouseDragged(MouseEvent e) { //用鼠标拖动事件源的处理操作
+	 		offx=px-ox;        //offx为鼠标指针与命令按钮左边界的距离
+	 		offy=py-oy;       //offy为鼠标指针与命令按钮上边界的距离
+	 		x=e.getX()-offx;
+	 		y=e.getY()-offy;
+	 		String position="命令按钮放置在（"+x+"，"+y+"）的位置\n";
+	 		ta2.append(position);    //setText(position);
+	 		btn.setLocation(x,y);  //将命令按钮放置在（x,y）的位置
+	 		ox=x;          //更新命令按钮左边缘的位置
+	 		oy=y;         //更新命令按钮上边缘的位置
+	 	}
+	 }	 
+	 static class MyPageBtnListener implements ActionListener{
+	 	public void actionPerformed(ActionEvent e)   //处理事件的程序代码
+	 	{	JButton butt=(JButton)e.getSource();
+	 		if(butt==but1) card.first(mainpan);
+	 		else card.last(mainpan);
+	 	}
+	 }
+
+}
+

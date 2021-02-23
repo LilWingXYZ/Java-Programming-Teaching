@@ -1,0 +1,27 @@
+//GridLayout_Exam.java GridLayout类的应用
+import java.awt.*;
+public class GridLayout_Exam extends Frame{
+	static Panel pnl=new Panel();
+	static Label lbl=new Label("0",Label.RIGHT);
+        static String[] name={"7","8","9","*","单位","4","5","6","/","M+","1","2","3","+","-","0","00",".","-","="};
+        public static void main(String args[ ]){
+		GridLayout_Exam  mainFrame = new GridLayout_Exam();
+		mainFrame.setTitle("网格布局管理器类的应用示例!");
+		mainFrame.setLayout(null);             //取消窗口的页面设置
+		mainFrame.setSize(200,200); 
+		mainFrame.setResizable(false);        //设置窗口的大小为不可改变
+		mainFrame.setLocation(150,150);
+		GridLayout grid=new GridLayout(4,4); //创建4行4列的页面配置
+		pnl.setLayout(grid);                 //将面板对象pnl的布局策略设为网格布局
+		pnl.setBounds(20,60,150,120);
+		lbl.setBounds(20,35,150,20);
+		lbl.setBackground(Color.yellow);      //设置标签的颜色
+	    for (int i = 0; i <name.length; i++) {
+			Button btn=new Button(name[i]);
+			pnl.add(btn);
+		}
+		mainFrame.add(lbl);
+		mainFrame.add(pnl);
+		mainFrame.setVisible(true);
+	  }
+}

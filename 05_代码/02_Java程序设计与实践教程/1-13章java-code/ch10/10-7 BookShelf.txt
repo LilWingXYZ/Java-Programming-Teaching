@@ -1,0 +1,17 @@
+public class BookShelf 	{
+		String bookName;
+		int amount;
+		public BookShelf (String name, int amt) {
+			bookName = name;
+			amount = amt;
+		}
+		public synchronized void putIn(int amt) {
+		 	amount += amt;
+		}
+		public synchronized void withdraw(int amt) {
+		 	amount -= amt;
+		}
+		public int checkRemainder () {
+		 	return amount;
+		}
+	}

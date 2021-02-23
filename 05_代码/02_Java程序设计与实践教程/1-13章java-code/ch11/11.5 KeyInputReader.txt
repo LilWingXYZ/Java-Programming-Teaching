@@ -1,0 +1,29 @@
+//KeyInputReader.java
+//键盘字符输入输出类，用来读取文本框中的字符串
+package drawing;
+import java.io.*;
+public class KeyInputReader {
+  private BufferedReader in;
+  private String str;
+  public KeyInputReader() {
+     in=new BufferedReader(new InputStreamReader(System.in));
+  }
+  public String readString(){
+    try{
+       str=in.readLine() ;
+    }
+    catch(IOException e) {
+      e.printStackTrace();
+    }
+    return str;
+  }
+  public int readInt(){
+      return Integer.parseInt(  readString());
+    }
+  public float readFloat(){
+      return Float.parseFloat(readString());
+  }
+  public double readDouble(){
+    return Double.parseDouble(readString());
+  }
+}

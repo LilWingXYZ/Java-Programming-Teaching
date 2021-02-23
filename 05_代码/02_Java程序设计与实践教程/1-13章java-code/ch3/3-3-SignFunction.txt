@@ -1,0 +1,32 @@
+package ch3;
+import java.io.*;
+public class SignFunction {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 */
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		// 以下7行语句的作用是从键盘输入x的值
+		InputStreamReader  ir;
+		BufferedReader  in;
+		ir=new  InputStreamReader(System.in);
+		in=new  BufferedReader(ir);
+		System.out.println("Input x is:");
+		String  s=in.readLine();
+		int  x=Integer.parseInt(s);
+
+		int   y;
+		//下面用if-else if结构求y的值
+		if (x<0){    
+         y=-1; }
+		else  if (x==0)	{    
+          y=0; }
+		else {   
+          y=1; }
+		System.out.println("x="+x+"y="+y);     // 输出x和y的值
+	 
+	}
+
+}

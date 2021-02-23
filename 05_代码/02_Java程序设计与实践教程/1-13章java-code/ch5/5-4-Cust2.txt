@@ -1,0 +1,12 @@
+public class Cust2{
+   Cust2(){
+     this("tom",100,"12345",10000);
+   }
+   Cust2(String newName,int newID,String newPWD,int newmoney)
+	{
+		name = newName;
+		ID = newID;
+		PWD = newPWD;
+		money = newmoney;
+	}
+}

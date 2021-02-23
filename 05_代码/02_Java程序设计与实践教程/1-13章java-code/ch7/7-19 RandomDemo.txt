@@ -1,0 +1,16 @@
+package ch7;
+
+import java.util.Random;
+
+public class RandomDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Random num=new Random();
+	    for(int i=0;i<10;i++)
+	      System.out.print(num.nextInt(100)+"\t" );
+	}
+}

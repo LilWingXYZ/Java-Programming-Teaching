@@ -1,0 +1,82 @@
+package ch6;
+ 
+public class VIPCust2 extends Cust2{
+	VIPCust2(String name,int ID,String PWD,int money)
+	{
+		super(name,ID,PWD,money);
+	}
+	void getMoney()
+	{
+		System.out.print("请输入要取出的钱数：");
+		int n = Integer.parseInt(KB1.scan());	
+		if(n-3000>=money)
+			System.out.print("不能透支超过3000！");
+		else	money = money-n;
+	}
+	boolean getMoney(int n)
+	{
+		if(n-3000>=money)
+		{
+			System.out.print("不能透支超过3000！");
+			return false;
+		}
+		else{
+			money = money-n;
+			return true;
+		}
+  	}
+	void zhuanzhang(Cust2 st[]){
+		System.out.println("请输入要转入的账号:");
+		int n = Integer.parseInt(KB1.scan());
+		for(int i=0;i<st.length;i++){
+			if(n==st[i].ID){
+				System.out.println("请输入转帐金额:");
+				int m = Integer.parseInt(KB1.scan());
+				if(m>=0){
+					if(this.getMoney(m)){
+						st[i].saveMoney(m);
+					}						
+				}
+				else {
+					if(st[i].checkPWD()==true){
+						if(this.getMoney(-m)){
+							st[i].saveMoney(-m);
+						}
+					}
+					else {
+						System.out.println("密码错误，不能转帐");
+					}
+				}
+				return;
+			}
+		}
+		System.out.println("没有此顾客");
+	}
+	public void run(Cust2 st[])
+    {
+    	if(checkPWD()==false){
+         	System.out.print("密码错误三次，欢迎下次输入");
+         	return;  		
+    	}
+    	boolean flag=true;
+    	while(flag){
+    		System.out.print("*******************\n");
+    		System.out.print("存钱请按\t1\n");
+			System.out.print("取钱请按\t2\n");
+			System.out.print("修改密码请按\t3 \n");
+			System.out.print("查询请按\t4 \n ");
+			System.out.print("退出请按\t5\n");
+			System.out.print("*******************\n");
+		    int n=Integer.parseInt(KB1.scan());
+			switch (n)
+			{
+			case 1:saveMoney();	break;
+			case 2:getMoney();  break;
+			case 3:changePWD();	break;
+			case 4:search();	break;
+			case 5:zhuanzhang(st);	break;
+			case 6:flag=false;  break;
+			}
+		}
+    }
+}

@@ -1,0 +1,6 @@
+public class ExecDemo {
+	public static void main(String[] args) throws Exception {
+		Runtime rt = Runtime.getRuntime();
+		rt.exec("mspaint.exe");      //在单独的进程中执行指定的字符串命令。
+	}
+}

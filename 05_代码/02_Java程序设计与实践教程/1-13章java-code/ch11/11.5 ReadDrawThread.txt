@@ -1,0 +1,49 @@
+//读取线程：ReadDrawThread.java
+// ==================== Program Discription ========================
+// 程序名称：ReadDrawThread.java
+// 程序目的：读取Socket中DrawObject对象的线程,DrawObject对象放在Vector中
+//==============================================================
+package drawing;
+import java.net.*;
+import java.io.*;
+import java.awt.Point;
+public class ReadDrawThread extends Thread {
+  private Socket socket;
+  public Draw dr;
+  private DrawObject ro = null;
+  public boolean update = true;
+  public ReadDrawThread(Socket socket, Draw dr) {
+    this.socket = socket;
+    this.dr = dr;
+  }
+ public void run() {
+    try {
+      BufferedReader in = new BufferedReader(new InputStreamReader (socket. getInputStream()));
+      while (true) {
+        System.out.println("begin receive");
+        String receive = in.readLine();
+        String[] result = receive.split(",");
+        for (int i=0;i<result.length;i++){
+         System.out.print(result[i]+"|");
+       }
+        System.out.println("");
+      if(result[0].equals("graphic")){
+        System.out.println("begin receive graphic");
+        Point start = new Point(Integer.parseInt(result[1]),
+                                Integer.parseInt(result[2]));
+        Point end = new Point(Integer.parseInt(result[3]),
+                              Integer.parseInt(result[4]));
+        ro = new DrawObject(start, end, result[5]);
+        dr.vDrawObject.add(ro);
+        dr.repaint();
+     }
+        if(result[0].equals("text")){
+           System.out.println("begin receive text result="+result[1]);
+         dr.lst.add(result[1]);}
+       }//while
+    }
+      catch (Exception ex) {
+        ex.printStackTrace();
+      }
+    }
+  }

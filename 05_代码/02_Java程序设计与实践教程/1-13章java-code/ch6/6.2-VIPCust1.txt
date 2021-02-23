@@ -1,0 +1,28 @@
+package ch6;
+
+public class VIPCust1 extends Cust1 {
+	VIPCust1(String name,int ID,String PWD,int money)
+	{
+		super(name,ID,PWD,money);
+	}
+	void getMoney()
+	{
+		System.out.print("请输入要取出的钱数：");
+		int n = Integer.parseInt(KB1.scan());	
+		if(n-3000>=money)
+			System.out.print("不能透支超过3000！");
+		else	money = money-n;
+	}
+	boolean getMoney(int n)
+	{
+		if(n-3000>=money)
+		{
+			System.out.print("不能透支超过3000！");
+			return false;
+		}
+		else{
+			money = money-n;
+			return true;
+		}
+  	}
+}

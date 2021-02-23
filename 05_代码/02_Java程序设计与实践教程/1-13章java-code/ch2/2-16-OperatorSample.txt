@@ -1,0 +1,19 @@
+public class OperatorSample{
+  public static void main(String args[]) {
+     byte  a=60;
+     short  b=4;
+     int  c=30;
+     long  d=4L;
+     long  result=0L;
+     result+=a-8;
+     System.out.println("result+=a-8:"+result);
+     result*=b;
+     System.out.println("result*=b:"+result);
+     result/=d+1;
+     System.out.println("result/=d+1:"+result);
+     result-=c;
+     System.out.println("result-=c:"+result);
+     result%=d;
+     System.out.println("result%=d:"+result);
+   }
+}

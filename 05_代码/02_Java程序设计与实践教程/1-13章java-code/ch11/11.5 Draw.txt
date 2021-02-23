@@ -1,0 +1,142 @@
+//运行界面程序：Draw.java
+// ==================== Program Discription ========================
+// 程序名称：Draw.java
+// 程序目的：Drawing类和ClientDrawing的父类，定义统一风格的界面
+// ==============================================================
+package drawing;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.Vector;
+import java.util.Enumeration;
+import java.net.*;
+//建立Drawing类，继承Frame类
+public class Draw extends Frame{
+  //建立menu菜单栏
+  MenuBar menuBar=new MenuBar();
+  Menu choose=new Menu("选择图形");
+  MenuItem chooseLine=new MenuItem("直线");
+  MenuItem chooseOval=new MenuItem("圆形");
+ //生成开始和结束的点，初始值为原点(0,0)
+  Point startPoint=new Point(0,0);
+  Point endPoint=new Point(0,0);
+  String type="Line";
+  //end=false, 发送文本初始值为假
+  boolean end=false;
+  Panel dp=new Panel();
+  TextField mes=new TextField(14);
+  List lst=new List(6);
+  ServerSocket ds;
+ //ReadThread read;
+  Vector vDrawObject=new Vector();
+  DrawObject sendobject=null;
+  boolean enddraw=false;
+  public Draw()  {
+    choose.add(chooseLine);
+    choose.add(chooseOval);
+    menuBar.add(choose);
+    this.setMenuBar(menuBar);
+//设置面板的属性和关闭事件
+     this.setTitle("画图板");
+     this.setBounds(0,0,400,400);
+     this.setSize(600,400);
+     this.setLayout(new BorderLayout());
+     this.setBackground(Color.white);
+     Panel p=new Panel();
+     p.setLayout(new BorderLayout());
+     p.add("Center",lst);
+     p.add("South",mes);
+     this.add("East",p);
+     this.setResizable(false);
+     this.setVisible(true);
+//添加窗口关闭的事件监听器
+     this.addWindowListener(new WindowAdapter(){
+        public void windowClosing(WindowEvent e){
+           System.exit(0);
+        }
+    });
+//为chooseLine添加监听器，当chooseLine激活时，drawLine为真，drawOval为假
+    chooseLine.addActionListener(new ActionListener() {
+       public void actionPerformed(ActionEvent e){
+         //drawLine=true; drawOval=false;
+         type="Line";
+         System.out.println(type);
+     }
+    });
+//为chooseOval添加监听器，当chooseOval激活时，drawOval为真,drawLine为假
+    chooseOval.addActionListener(new ActionListener()  {
+        public void actionPerformed(ActionEvent e){
+            type="Circle";
+      }
+    });
+//添加鼠标监听器，当鼠标按下时，stratPoint获得开始点的坐标，鼠标松开时，endPoint
+//获得结束点的坐标
+   this.addMouseListener(new MouseAdapter() {
+      public void mousePressed(MouseEvent e){
+         startPoint=e.getPoint();
+         System.out.println("mousepressed");
+    }
+    public void mouseReleased(MouseEvent e){
+       //生成一个图形对象
+       Graphics g=e.getComponent().getGraphics();
+       endPoint=e.getPoint();
+       DrawObject drawobject=new DrawObject(startPoint,endPoint,type);
+       //启动Write 线程，通过Socket写入对象
+       sendobject=drawobject;
+       vDrawObject.add(drawobject);
+       //begin draw
+       enddraw=true;
+       System.out.println("mousereleased");
+       repaint();
+      }
+   });
+   this.addMouseMotionListener(new MouseMotionAdapter() {
+      public void mouseDragged(MouseEvent e){
+         Graphics g=e.getComponent().getGraphics();
+         endPoint=e.getPoint();
+         System.out.println("mousedragged");
+         repaint();
+      }
+  });
+  mes.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e) {
+          //begin text
+            end=true;
+   }
+  });
+}
+//绘图
+public void paint(Graphics g) { 
+g.setColor(Color.BLUE);
+    System.out.println("paint");
+    Enumeration e = vDrawObject.elements();
+    while (e.hasMoreElements()) {
+      DrawObject o = (DrawObject) e.nextElement();
+      if (o.type.equals("Line"))
+        g.drawLine(o.startPoint.x, o.startPoint.y, o.endPoint.x, o.endPoint.y);
+      else if (o.type.equals("Circle")) {
+        if (o.startPoint.x <= o.endPoint.x)
+          if (o.startPoint.y <= o.endPoint.y)
+            g.drawOval(o.startPoint.x, o.startPoint.y,
+                       o.endPoint.x - o.startPoint.x,
+                       o.endPoint.y - o.startPoint.y);
+          else
+            g.drawOval(o.startPoint.x, o.endPoint.y,
+                       o.endPoint.x - o.startPoint.x,
+                       o.startPoint.y - o.endPoint.y);
+        else
+        if (o.startPoint.y <= o.endPoint.y)
+          g.drawOval(o.endPoint.x, o.startPoint.y,
+                     o.startPoint.x - o.endPoint.x,
+                     o.endPoint.y - o.startPoint.y);
+        else
+          g.drawOval(o.endPoint.x, o.endPoint.y, 
+o.startPoint.x - o.endPoint.x,
+o.startPoint.y - o.endPoint.y);
+       }
+    }
+  }
+   public Container getContentPane(){
+      return null;
+  }
+  //显示Drawing
+}

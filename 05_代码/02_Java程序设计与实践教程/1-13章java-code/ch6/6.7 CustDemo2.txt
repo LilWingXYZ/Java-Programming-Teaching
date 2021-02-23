@@ -1,0 +1,38 @@
+package ch6;
+ 
+public class CustDemo2 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Cust2  st[]=new Cust2[8];
+		st[0]=new Cust2("Tom",100,"12345",10000);
+		st[1]=new Cust2("Tom11",101,"12345",10000);
+		st[2]=new Cust2("Tom2",102,"12345",10000);
+		st[3]=new Cust2("Tom3",103,"12345",10000);
+		st[4]=new VIPCust2("Tom4",104,"12345",10000);
+		st[5]=new VIPCust2("Tom5",105,"12345",10000);
+		st[6]=new VIPCust2("Tom6",106,"12345",10000);
+		st[7]=new VIPCust2("Tom7",107,"12345",10000);
+		
+		while(true){
+
+			System.out.print("请输入您的ID：");
+			int ID = Integer.parseInt(KB1.scan());
+			for(int i=0;i<st.length;i++){
+				if(ID == st[i].getID())
+				{
+					st[i].run(st);
+					break;
+				}
+			}
+			System.out.print("是否退出系统（Y/N）");
+			String str=KB1.scan();
+			if(str.equals("N")||str.equals("n"))
+				break;
+		}
+	}
+}

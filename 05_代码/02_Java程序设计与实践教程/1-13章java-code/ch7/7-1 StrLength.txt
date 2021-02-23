@@ -1,0 +1,19 @@
+package ch7;
+
+public class StrLength {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s1="Hello,Java!";
+		String s2=new String("你好,Java");
+		int len1=s1.length();
+		int len2=s2.length();
+		System.out.println("字符串s1长度为"+len1);
+		System.out.println("字符串s2长度为"+len2);
+
+	}
+
+}

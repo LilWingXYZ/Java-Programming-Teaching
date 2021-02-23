@@ -1,0 +1,13 @@
+package lession3;
+import lession3.otherpackage.PublicClassOtherPackage;
+
+public class Lession3{
+   public static void main(String[] args){
+       System.out.println(new PublicClassSamePackage().toString();
+       System.out.println(new DefaultClassSamePackage().toString();
+       System.out.println(new PublicClassOtherPackage().toString();
+       System.out.println(new DefaultClassOtherPackage().toString();
+
+   }
+
+}

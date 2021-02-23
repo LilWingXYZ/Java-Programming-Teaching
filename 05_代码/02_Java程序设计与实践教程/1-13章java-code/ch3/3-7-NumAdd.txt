@@ -1,0 +1,20 @@
+package ch3;
+
+public class NumAdd {
+	static final int MAX_INDEX=10;    // 定义静态常量
+	   
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int  n=MAX_INDEX;
+	      int  sum=0;
+	      while (n>0) {   //n>0时，累加求和；否则结束循环
+	        sum+=n;    //将自然数n的值加到sum中
+	        n--;        //n的值减1成为下一个自然数
+	      }
+	     System.out.println("1+2+...+10="+sum);    // 输出和" +
+	}
+
+}

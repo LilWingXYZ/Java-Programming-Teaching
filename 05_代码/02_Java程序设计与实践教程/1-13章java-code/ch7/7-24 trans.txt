@@ -1,0 +1,10 @@
+package ch7;
+
+public class trans{
+  public static void main(String[] args){
+    int i=10;
+    Integer num=new Integer(i);
+    int x=num.intValue();
+    System.out.println(¡°x=¡±+x);
+    }
+}

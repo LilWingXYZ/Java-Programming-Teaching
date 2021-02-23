@@ -1,0 +1,35 @@
+package ch3;
+
+import java.io.*;
+
+public class GradeDevide {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 */
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		int ch;
+	    //下面7行语句的作用是从键盘输入ch的值
+	   InputStreamReader  ir;
+	   BufferedReader  in;
+	   ir=new  InputStreamReader(System.in);
+	   in=new BufferedReader(ir);
+	   System.out.println("Input ch is:");
+	   String s=in.readLine();
+	   ch=s.charAt(0);
+	   char grade;
+	   ch=ch/10;
+	   switch(ch){
+	      case 9: {grade ='A'; break;}
+	      case 8: {grade ='B'; break; }
+	      case 7: {grade ='C'; break; }
+	      case 6: {grade ='D'; break; }
+	      default: grade = 'F';
+	    }
+	    System.out.println("Grade = " + grade);  
+	   
+	}
+
+}

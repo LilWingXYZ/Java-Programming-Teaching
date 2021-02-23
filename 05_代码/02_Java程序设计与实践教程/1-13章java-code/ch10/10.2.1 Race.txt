@@ -1,0 +1,37 @@
+import java.awt.*;
+import java.lang.Math;
+import java.lang.Thread;
+public class Race{
+  public static void main (String args [])  { 
+ 	Animat rabbit = new Animat("Rabbit", 15 , 50);
+     	Animat turtle = new Animat("Turtle", 12 , 50);
+     	Thread myThread1 = new Thread (rabbit);
+     	Thread myThread2 = new Thread (turtle);
+     	myThread1.start();
+     	myThread2.start();
+     	System.out.println("This is the main application.");
+  }
+}
+class Animat implements Runnable{
+  private String name;
+  private int speed;
+  private int distance;
+  private int curdistance = 0;
+  public Animat (String name, int speed, int distance)  {
+    this.name = name;
+    this.speed = speed;
+    this.distance = distance;
+  }
+  public void run()  {
+    while ( curdistance < distance )    {
+      try   { 
+	Thread.sleep ( (int) (Math.random() * 1000) + 500 );
+      }
+      catch (Exception e) {
+	}
+      curdistance += Math.random () * speed ;
+      System.out.println (name + " : I am at " + curdistance );
+    }
+    System.out.println (name + " have finished ! ");
+   }
+}

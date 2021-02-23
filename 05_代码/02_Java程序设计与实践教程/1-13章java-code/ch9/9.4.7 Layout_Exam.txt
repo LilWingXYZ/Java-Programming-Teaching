@@ -1,0 +1,114 @@
+﻿import java.awt.*;
+//import java.awt.event.*;
+import javax.swing.*;
+
+public class  Layout_Exam extends JFrame{
+	public static void main(String args[ ]){
+		JFrame mainJFrame = new JFrame("布局管理器类综合应用示例!");
+		mainJFrame.setLayout(new BorderLayout()); 
+		mainJFrame.setSize(300,300);
+		//定义主窗口北部区域面板
+		JPanel northPnl=new JPanel();
+		northPnl.setLayout(new FlowLayout());
+		northPnl.setFont(new Font("Helvetica",Font.PLAIN ,18));
+		northPnl.setBounds(0,0,250,50);
+		northPnl.setBackground(Color.yellow);
+		for (int i = 1; i < 6; i++) {
+		     JButton northBtn=new JButton("nB"+i);
+			northPnl.add(northBtn);
+		}
+		mainJFrame.add("North",northPnl);
+		//定义主窗口西部区域面板
+		JPanel westPnl=new JPanel();
+		GridBagLayout gridbag=new GridBagLayout();
+		GridBagConstraints constraints=new GridBagConstraints();
+		westPnl.setLayout(gridbag);
+		westPnl.setFont(new Font("Helvetica",Font.PLAIN ,14));
+     westPnl.setSize(50,100);
+     constraints.fill=GridBagConstraints.BOTH;
+	    for (int i = 1; i < 2; i++) {
+	    	   constraints.weightx=1;
+	    	   constraints.gridwidth=1;
+	    	   JButton westBtn1=new JButton("wB"+(3*i-2));
+	    	   gridbag.setConstraints(westBtn1,constraints);
+	    	   westPnl.add(westBtn1);
+	       JButton westBtn2=new JButton("wB"+(3*i-1));
+	       gridbag.setConstraints(westBtn2,constraints);
+	    	   westPnl.add(westBtn2);
+	       constraints.gridwidth=GridBagConstraints.REMAINDER;
+	    	   JButton westBtn3=new JButton("wB"+3*i);
+	    	   gridbag.setConstraints(westBtn3,constraints);
+	    	   westPnl.add(westBtn3);
+	    }
+	    
+	    for (int i = 2; i <3; i++) {	        
+	        constraints.weightx=1;
+	       	constraints.gridwidth=2;
+	        JButton westBtn1=new JButton("wB"+(3*i-2));
+	        gridbag.setConstraints(westBtn1,constraints);
+	    	    westPnl.add(westBtn1);
+	   	    
+	   	   	constraints.gridwidth=GridBagConstraints.REMAINDER;
+	      	JButton westBtn2=new JButton("wB"+(3*i-1));
+	     	gridbag.setConstraints(westBtn2,constraints);
+	     	westPnl.add(westBtn2);
+	     	
+	     	constraints.gridwidth = 1; 
+	     	constraints.gridheight=2;
+	       	constraints.weighty = 1.0;
+	         constraints.weightx=1;
+	     	JButton westBtn3=new JButton("wB"+3*i);
+	     	gridbag.setConstraints(westBtn3,constraints);
+	     	westPnl.add(westBtn3);
+	    }
+	    for (int i =3; i <4; i++) {
+	        constraints.weighty = 1.0;  	        
+	        constraints.gridwidth=GridBagConstraints.REMAINDER;
+	        constraints.gridheight=1;
+	        JButton westBtn1=new JButton("wB"+(3*i-2));
+	        gridbag.setConstraints(westBtn1,constraints);
+	        westPnl.add(westBtn1);
+	        JButton westBtn2=new JButton("wB"+(3*i-1));
+	        gridbag.setConstraints(westBtn2,constraints);
+	        westPnl.add(westBtn2);
+	        constraints.gridwidth=GridBagConstraints.REMAINDER;
+	        constraints.gridheight=1;
+	        JButton westBtn3=new JButton("wB"+3*i);
+	        gridbag.setConstraints(westBtn3,constraints);
+	        westPnl.add(westBtn3);
+	    }
+	    mainJFrame.add("West",westPnl); 
+     //定义主窗口中央区域面板 
+		JPanel centerPnl=new JPanel();
+		CardLayout card=new CardLayout(5,10);
+	    centerPnl.setLayout(card);
+     centerPnl.setSize(50,100);
+     centerPnl.setFont(new Font("Helvetica",Font.BOLD+Font.ITALIC,20));
+     for (int i = 1; i < 4; i++) {
+			JTextField centerText=new JTextField("centerTF "+i,24);
+			centerText.setBackground(Color.white);			
+			centerText.setForeground(Color.black);
+			centerPnl.add(centerText,"cT"+i);
+		}
+	 	card.show(centerPnl,"cT2");   //显示标识为"cT2"的页面
+	    mainJFrame.add("Center",centerPnl); 
+    //定义主窗口南部区域面板 
+	    JPanel southPnl=new JPanel();
+		southPnl.setLayout(new FlowLayout());
+		southPnl.setBackground(Color.green);
+	  	southPnl.setFont(new Font("Helvetica",Font.ITALIC ,14));
+	    JLabel southLbl=new JLabel("showStuts:");
+		southPnl.add(southLbl);
+	    for (int i = 1; i <3; i++) {
+	    	JTextField southText=new  JTextField(" stuts"+i,6);
+	    	southText.setBackground(Color.lightGray);
+	    	southText.setForeground(Color.blue);
+	    	southPnl.add(southText);
+	    }
+	   mainJFrame.add("South",southPnl); 
+	   mainJFrame.setVisible(true);
+	 } 
+
+
+
+}

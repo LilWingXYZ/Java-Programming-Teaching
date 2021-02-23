@@ -1,0 +1,45 @@
+package ch7;
+
+class PointDemo<T> {
+    private T x;
+    private T y;
+    public void setX(T x){
+	  this.x=x;
+    }
+    public void setY(T y){
+	  this.y=y;
+    }
+    public T getX(){
+	  return x;
+    }
+    public T getY(){
+	  return y;
+    }
+}
+
+public class PointTest {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		PointDemo<Integer> p1=new PointDemo<Integer>();
+		PointDemo<Float> p2=new PointDemo<Float>();
+		PointDemo<String> p3=new PointDemo<String>();
+		//设置整型类型的坐标值
+		p1.setX(30);     
+		p1.setY(50);
+		//设置浮点类型的坐标值
+		p2.setX(30.2f);  
+		p2.setY(50.1f);
+		//设置字符串类型的坐标值
+		p3.setX("东经");  
+		p3.setY("北纬");
+		System.out.println("x1、y1的坐标值为："+p1.getX()+p1.getY());
+		System.out.println("x2、y2的坐标值为："+p2.getX()+p2.getY());
+		System.out.println("x3、y3的坐标值为："+p3.getX()+p3.getY());
+	    
+	}
+
+}

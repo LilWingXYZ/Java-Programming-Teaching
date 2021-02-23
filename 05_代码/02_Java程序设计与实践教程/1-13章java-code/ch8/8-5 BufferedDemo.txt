@@ -1,0 +1,29 @@
+package ch8;
+
+import java.io.*;
+
+public class BufferedDemo {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 */
+	public static void main (String[] args){  
+		try{
+		      byte b[]={49,50,51,52,53,,5,66,67,68,69,97,98,99,100,101};
+			FileOutputStream fos=new FileOutputStream("one.dat",true);
+			BufferedOutputStream bos=new BufferedOutputStream(fos);
+			//定义一个数据缓冲输出流
+			DataOutputStream dos=new DataOutputStream(bos);
+			//将字节数组的数据输出到缓冲区
+			dos.write(b,0,b.length); 
+			dos.flush();   
+		}
+		catch(FileNotFoundException e) {
+			System.out.println(e.toString()); 
+		}
+		catch(IOException e) {
+			System.out.println(e.toString()); 
+		}
+	}
+}

@@ -1,0 +1,14 @@
+public class  ArithmaticTest2	{  
+ public static void main(string  args[] ){  
+    int  a=7/2;          //结果为3，两个操作数都为int型，结果也为int型
+    double   b=7/2.0;    //结果为3.5，其中一个操作数为double型，结果也为double型
+    byte  x=5,y=6;
+    long  r=90L;
+    long  g=r/a;         //结果为30L，其中一个操作数为long型，结果也为long型
+    int  c=x*y;          //结果为30，两个操作数都为byte型，结果为int型
+    float  z=8.3f,  w=2.9f;
+    float  d=z+w;        //结果为11.2f，两个操作数都为float型，结果也为float型
+    float  e=c-z;         //结果为21.7f，其中一个操作数为float型，结果也为float型
+   double  f=b%a;      //结果为0.5，取模运算，其中一个操作数为double型
+   }
+}

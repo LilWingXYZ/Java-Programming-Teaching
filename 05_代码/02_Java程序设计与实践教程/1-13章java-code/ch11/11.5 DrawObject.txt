@@ -1,0 +1,15 @@
+//DrawObject.java
+//图形(圆和直线)的封装类，用来描述图形对象
+package drawing;
+import java.awt.Point;
+import java.io.Serializable;
+public class DrawObject implements Serializable{
+  public Point startPoint;
+  public Point endPoint;
+  public String type;
+  public DrawObject(Point start,Point end,String type) {
+    this.startPoint=start;
+    this.endPoint=end;
+    this.type=type;
+  }
+}

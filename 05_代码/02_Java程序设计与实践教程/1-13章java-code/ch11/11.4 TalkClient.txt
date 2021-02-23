@@ -1,0 +1,40 @@
+//TalkClient.java
+import java.io.*;
+import java.net.*;
+
+public class TalkClient {
+	public static void main(String args[]) {
+		try {
+			Socket socket = new Socket("127.0.0.1", 4700);
+			System.out.println("server: " + socket);
+			BufferedReader sin;
+			sin = new BufferedReader(
+					new InputStreamReader(System.in));
+			PrintWriter os = new PrintWriter(
+					             socket.getOutputStream());
+			BufferedReader is;
+			is = new BufferedReader(
+					new InputStreamReader(socket.getInputStream()));
+			System.out.println("发送字符串");
+			String readline = sin.readLine();//读取用户输入的字符串
+			os.println(readline);//将字符串传送给服务器端
+			os.flush();
+			System.out.println("等待获取服务器获得字符串");
+			if (readline.equals("Not/file")) {
+				System.out.println(readline);
+				throw new FileNotFoundException("文件不存在异常！");
+			}
+			while (true) {
+				readline = is.readLine();// 获取服务器获得的字符串
+				if (readline.equals("end"))
+					break;
+				System.out.println(readline);
+			}
+			os.close();
+			is.close();
+			socket.close();
+		} catch (Exception e) {
+			System.out.println("异常" + e);
+		}
+	  }
+}

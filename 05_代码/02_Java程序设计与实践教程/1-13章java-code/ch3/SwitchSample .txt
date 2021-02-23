@@ -1,0 +1,67 @@
+import java.io.*;
+
+
+public class SwitchSample {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 */
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		InputStreamReader  ir;
+		BufferedReader  in;
+		ir=new  InputStreamReader(System.in);
+		in=new  BufferedReader(ir);
+		int  month=0;
+		String  season;
+		
+		while(month!=-1){
+		System.out.println("Input month is:");
+		String  s=in.readLine();
+		if(s!=null&&s.matches("^[0-9]+$")){ 
+			//是数字 
+			month=Integer.parseInt(s);		
+	        
+			if (month>12 || month<1)
+				continue;
+			if (month==-1)
+				break;
+			switch (month){
+			  case 12:
+			  case 1:
+			  case 2:
+			      season="Winter";
+			      break;
+			  case 3:
+			  case 4:
+			  case 5:
+		          season="Spring";
+			      break;
+			  case 6:
+			  case 7:
+			  case 8:
+			      season="Summer";
+				  break;
+			  case 9:
+			  case 10:
+			  case 11:
+				  season="Autumn";
+				  break;
+			  default:
+				  season="Bogus  Month";
+			}
+			System.out.println(month+" is in the "+season+".");
+			}
+		else{ 
+			//提示输入的格式不正确 
+			System.out.println(" input error!!!!!!");
+			}
+
+		
+
+		}
+
+	}
+
+}

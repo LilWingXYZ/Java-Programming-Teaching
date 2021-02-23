@@ -1,0 +1,37 @@
+﻿import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class CardLayout_Exam extends JFrame{
+static JFrame mainJFrame = new JFrame("卡片布局管理器类的应用示例!");
+	static JPanel pnl1=new JPanel();
+	static JPanel pnl2=new JPanel();
+	static String[] str={"第一页","上一页","下一页","最后页"};
+	static CardLayout card=new CardLayout(5,10);  //需将card定义为static类型
+	public static void main(String args[ ]){
+		mainJFrame.setLayout(null);              //取消窗口的页面设置
+		mainJFrame.setSize(360,260);
+		mainJFrame.getContentPane().setBackground(Color.pink);  //设置窗口底色为粉红色
+		mainJFrame.setResizable(false);
+		pnl1.setLayout(card);
+		pnl1.setBounds(10,10,320,160);
+	    pnl2.setLayout(new GridLayout(1,4));   //将面板对象设置为1行4列的布局
+	    pnl2.setBounds(10,180,320,35);
+		for (int i = 1; i < 4; i++) {
+			String str=new String("第"+i+"页");
+			JTextField text=new JTextField("卡片布局策略!! "+str,30);
+			pnl1.add(text,"t"+i);          //将文本框组件text命名为t1后加入到面板中
+		}
+		card.show(pnl1,"t3");             //将pnl1中的text组件显示在容器中
+		for (int i = 0; i <str.length; i++) {
+			JButton b = new JButton(str[i]);
+			pnl2.add(b);
+		}
+		mainJFrame.add(pnl1);            //将面板添加到窗口里
+		mainJFrame.add(pnl2);
+		mainJFrame.setVisible(true);
+	  }
+
+
+
+}

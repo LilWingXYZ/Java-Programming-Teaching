@@ -1,0 +1,11 @@
+public class HasStatic{
+   private static int x = 100;
+   public static void main(String args[]){
+	   HasStatic hs1 = new HasStatic(); 
+	   HasStatic hs2 = new HasStatic(); 
+	   hs1.x++;
+	   hs2.x++;
+	   hs1.x++;
+	   System.out.println("x="+x);
+  }
+}

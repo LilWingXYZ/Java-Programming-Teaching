@@ -1,0 +1,14 @@
+public class  ArithmaticTest1	{  
+   public static void main(string  args[] ){  
+      int  a=9;
+      int  b=-a;    //b=-9
+      int  i=0;
+      int  j=i++;    //i=1, j=0
+      int  k=++j;    //j=1, k=1
+      System.out.println("a="+a);
+      System.out.println("b="+b); 
+      System.out.println("i="+i);
+      System.out.println("j="+j);
+      System.out.println("k="+k);
+    }
+}

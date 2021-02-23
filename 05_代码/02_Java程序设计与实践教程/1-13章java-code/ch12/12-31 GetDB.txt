@@ -1,0 +1,41 @@
+
+ import java.sql.Connection;
+ import java.sql.DriverManager;
+ import java.sql.ResultSet;
+ import java.sql.SQLException;
+ import java.sql.Statement; 
+public class GetDB{
+	ResultSet re ;
+	Connection con;
+	String driver = "com.microsoft.jdbc.sqlserver.SQLServerDriver";
+	String url = "jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=db_shop";
+	public GetDB() {
+		try {
+			Class.forName(driver);
+		}catch (ClassNotFoundException ex) {		
+			System.out.println("There are exception about " + ex.getMessage());
+		}
+	}
+	public Statement getStatement() throws SQLException {
+	 	con = DriverManager.getConnection(url, "sa", "6462133");	
+		return con.createStatement();
+	}
+	public ResultSet runSQLSearch(String sql) throws SQLException {	
+		return getStatement().executeQuery(sql);
+	 }
+	public int runSQLUpdata(String sql) throws SQLException {
+	   return getStatement().executeUpdate(sql);
+ 	}
+	public ResultSet executeQuery(String sql){
+	   try {
+		Statement stat = con.createStatement();		
+		re= stat.executeQuery(sql);
+	   } catch (SQLException e) {
+		e.printStackTrace();
+	   }
+	   return null ;
+	}
+	public void runSQL(String sql) throws SQLException{
+		getStatement().execute(sql);
+	}
+}

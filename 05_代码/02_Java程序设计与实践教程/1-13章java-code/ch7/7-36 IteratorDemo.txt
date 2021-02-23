@@ -1,0 +1,29 @@
+package ch7;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class IteratorDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List list = new ArrayList();
+		list.add("one");
+		list.add("second");
+		list.add("third");
+		list.add(new Integer(4));
+		list.add(new Float(5.0F));
+		list.add("second"); // true
+		list.add(new Integer(4)); // true
+		
+		Iterator iterator = list.iterator();
+		while (iterator.hasNext())
+		  System.out.println(iterator.next());
+	    
+	}
+
+}

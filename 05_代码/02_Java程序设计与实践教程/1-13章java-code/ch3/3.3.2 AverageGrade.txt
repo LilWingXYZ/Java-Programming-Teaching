@@ -1,0 +1,31 @@
+package ch3;
+import java.io.*;
+
+public class AverageGrade {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 */
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		int  ch, sum;
+	    float  avg;
+	    sum=0;  
+	    for (int i=0; i<5; i++) { 
+	   //下面7行语句的作用是从键盘输入ch的值
+	   InputStreamReader  ir;
+	   BufferedReader  in;
+	   ir=new  InputStreamReader(System.in);
+	   in=new BufferedReader(ir);
+	   System.out.println("Input ch is:");
+	   String s=in.readLine();
+	   ch=s.charAt(0);
+	   sum=sum+ch;
+	   }
+	   avg=sum/5;
+	   System.out.println("Average="+avg);
+	   
+	}
+
+}

@@ -1,0 +1,15 @@
+public class StringArrDemo{
+	public static void main(String args[]){
+		int  i;
+		String[] season=new String[4];
+		season[0]="spring";
+		season[1]="summer";
+		season[2]="autumn";
+		season[3]="winter";
+		
+		System.out.println("season is :");  
+		for(i=0;i<season.length;i++){
+		¡¡System.out.print(season[i]+" ");
+	        }
+	}
+}

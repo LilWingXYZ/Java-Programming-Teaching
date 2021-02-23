@@ -1,0 +1,31 @@
+package ch7;
+
+import java.util.HashSet;
+
+class Data {
+    // 覆盖hashCode()方法，得到一样的hashcode
+    public int hashCode() {
+	  return 12;
+    }
+
+    // 覆盖equals()方法，是每个对象比较相等
+    public boolean equals(Object o) {
+	  return true;
+    }
+}
+
+public class SetTest1 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		HashSet hs = new HashSet();
+		for (int i = 0; i < 10; i++)// 保存了10个数据
+		  hs.add(new Data());
+		System.out.println(hs);
+	
+	}
+
+}

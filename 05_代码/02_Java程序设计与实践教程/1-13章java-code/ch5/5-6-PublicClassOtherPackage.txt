@@ -1,0 +1,7 @@
+package lession3.otherPackage;
+
+public class PublicClassOtherPackage{
+   public String  toString(){
+       return "其他package的公开类";
+   }  
+}

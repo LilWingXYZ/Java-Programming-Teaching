@@ -1,0 +1,51 @@
+﻿/**
+ * @(#)Exam.java
+ *
+ * JFC Sample application
+ *
+ * @author 
+ * @version 1.00 10/08/04
+ */
+ 
+package myprojects.exam; 
+
+
+import java.awt.*;
+//import java.awt.event.*;
+import javax.swing.*;
+
+/**
+ * @(#)Exam.java
+ *
+ * JFC Sample application
+ *
+ * @author 
+ * @version 1.00 10/08/04
+ */
+public class JPanel_Exam {
+    
+    public static void main(String[] args) {
+    	
+        // Create application frame.
+        JFrame mainJFrame = new JFrame("框架+面板示例!");
+	 mainJFrame.setSize(240,240);
+	 mainJFrame.setBackground(Color.lightGray);
+	 mainJFrame.setLocation(200,200);
+	 JPanel pnl=new JPanel();
+	 pnl.setSize(190,180);                  //设置pnl的大小
+	 pnl.setBackground(Color.green);       //设置pnl的背景
+	 pnl.setLocation(20,20);             //设置pnl面板的位置
+	 JButton btn=new JButton ("我是一个按钮，点击我");
+	 btn.setSize(170,40);  //设置btn的大小
+	 btn.setBackground(Color.yellow); //设置btn的背景色
+	 btn.setLocation(10,50);         //设置btn的位置
+	 mainJFrame.setLayout(null);     //取消mainJFrame的默认布局管理器
+	 pnl.setLayout(null);          //取消pnl的默认布局管理器
+	 pnl.add(btn);                //将命令按钮btn加入到面板pnl中
+	 mainJFrame.add(pnl);   //将面板pnl加入到窗口默认面板中
+
+       mainJFrame.setVisible(true);  //设置JFrame为可见，缺省为不可见
+        // Show frame.
+       //mainJFrame.show();
+    }
+}

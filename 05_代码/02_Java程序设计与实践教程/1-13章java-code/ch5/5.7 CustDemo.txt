@@ -1,0 +1,49 @@
+package ch5;
+
+public class CustDemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        Cust5 st = new Cust5("Tom",100,"12345",10000);
+		
+		System.out.print("请输入您的ID：");
+		int ID = Integer.parseInt(KB.scan());
+		if(ID == st.getID())
+		{
+			while (true)
+			{
+				System.out.print("1存钱  ");
+				System.out.print("2取钱  ");
+				System.out.print("3修改密码  ");
+				System.out.print("4查询  ");
+				System.out.print("5退出");
+				int n=Integer.parseInt(KB.scan());
+				switch (n)
+				{
+				case 1:
+					st.saveMoney();
+					break;
+				case 2:
+					st.getMoney();
+					break;
+				case 3:
+					st.changePWD();
+					break;
+				case 4:
+					st.search();
+					break;
+				case 5:
+					System.exit(1);
+				}
+			}
+		}
+		else
+		{
+			System.out.print("您输入的ID错误！");
+		}
+	}
+
+}

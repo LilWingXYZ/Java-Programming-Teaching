@@ -1,0 +1,30 @@
+//客户端Socket程序：ClientDrawing.java
+// ==================== Program Discription ==========================
+// 程序名称：ClientDrawing.java
+// 程序目的：TCP客户端 ServerSocket编程
+// ===================================================================
+package drawing;
+import java.net.*;
+public class ClientDrawing extends Draw{
+  ReadThread read;
+  public ClientDrawing() {
+   super();
+   this.setTitle("客户端");
+  }
+//显示Drawing
+  public static void main(String[] args){
+    ClientDrawing dr=new ClientDrawing();
+    dr.show();
+    //生成客户端Socket,请求与服务器Socket连接
+    try {
+     Socket socket = new Socket("localhost", 8189);
+     ReadDrawThread readdraw=new ReadDrawThread(socket,dr);
+     WriteDrawThread writedraw=new WriteDrawThread(socket,dr);
+      readdraw.start();
+      writedraw.start();
+    }
+    catch (Exception ex) {
+      ex.printStackTrace();
+     }
+   }
+}

@@ -1,0 +1,23 @@
+﻿import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+ 
+public class BorderLayout_Exam {
+    
+  	static JFrame mainJFrame = new JFrame("边界布局管理器类的应用示例!"); 
+	public static void main(String args[ ]){
+		BorderLayout border=new BorderLayout(2,4);
+		mainJFrame.setLayout(border);             //设置页面布局为BorderLayout
+		mainJFrame.setSize(250,250);
+		mainJFrame.getContentPane().setBackground(Color.green);   //设置窗口底色为绿色
+		mainJFrame.setLocation(150,150);
+		mainJFrame.add(new JButton("北"), BorderLayout.NORTH);
+		mainJFrame.add(new JButton("南"), BorderLayout.SOUTH);
+		mainJFrame.add(new JButton("东"), BorderLayout.EAST);
+		mainJFrame.add(new JButton("西"), BorderLayout.WEST);
+		mainJFrame.add(new JButton("中央"), BorderLayout.CENTER);
+		mainJFrame.setVisible(true);
+}
+
+}

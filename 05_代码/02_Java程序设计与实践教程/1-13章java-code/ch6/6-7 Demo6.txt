@@ -1,0 +1,56 @@
+package ch6;
+interface IMammal
+{
+	public abstract void speak();
+	public abstract void eat();
+	public abstract void sleep();
+}
+
+class Dog2 implements IMammal
+{
+	public void speak()
+	{
+		System.out.println("ÍôÍô½Ğ."); 
+	}
+	public void eat()
+	{
+		System.out.println("°®³ÔÈâ¹ÇÍ·."); 
+	}
+	public void sleep()
+	{
+		System.out.println("ÍíÉÏË¯¾õ."); 
+	}
+}
+
+class Cat2 implements IMammal
+{
+	public void speak()
+	{
+		System.out.println("ß÷ß÷½Ğ."); 
+	}
+	public void eat()
+	{
+		System.out.println("°®³ÔĞ¡Óã."); 
+	}
+	public void sleep()
+	{
+		System.out.println("°×ÌìË¯¾õ."); 
+	}
+}
+
+public class Demo6 {
+	public static void main(String[] args)
+	{
+		Dog2 d = new Dog2();
+		System.out.println("¹·µÄÌØµã£º");
+		d.speak();
+		d.eat();
+		d.sleep();
+		
+		Cat2 c = new Cat2();
+		System.out.println("¹·µÄÌØµã£º");
+		c.speak();
+		c.eat();
+		c.sleep();
+	}
+}

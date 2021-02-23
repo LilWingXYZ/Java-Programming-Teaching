@@ -1,0 +1,10 @@
+package ch7;
+
+public class IntAndInteger{
+  public static void main(String[] args){
+    Integer num=5;  //自动装箱操作
+    int t=num;      //自动拆箱操作
+    System.out.println(t*num);
+  }
+}
+

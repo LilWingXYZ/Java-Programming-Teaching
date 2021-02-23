@@ -1,0 +1,24 @@
+package ch7;
+
+public class StrSearch {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s1="Javav";
+	    char c=s1.charAt(2);
+	    System.out.println("c="+c);
+	    int i=s1.indexOf('a');
+	    System.out.println("fistchar="+i);
+	    int j=s1.lastIndexOf('a');
+	    System.out.println("lastchar="+j);
+	    i= s1.indexOf("av");
+	    System.out.println("fiststring="+i);
+	    j=s1.lastIndexOf("av");
+	    System.out.println("laststring="+j);
+
+	}
+
+}

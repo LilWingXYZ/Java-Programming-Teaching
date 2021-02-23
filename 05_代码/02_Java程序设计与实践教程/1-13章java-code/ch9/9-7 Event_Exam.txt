@@ -1,0 +1,41 @@
+﻿import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+
+public class Event_Exam extends JFrame implements ActionListener{
+    	static Exam mainJFrame = new Exam();
+	static JLabel labl1,labl2;
+	static JLabel showlb1=new JLabel("0");
+	static JLabel showlb2=new JLabel("0.0");
+	static JTextField text1,text2;
+	public static void main(String args[]){
+		mainJFrame.setTitle("操作事件示例!");
+		mainJFrame.setLayout(new FlowLayout());
+		mainJFrame.setSize(200,160);
+	    labl1=new JLabel("输入整型数:");
+	    mainJFrame.add(labl1);
+	    text1=new JTextField("0",10);
+	    text1.addActionListener(mainJFrame); //把监听者mainJFrame向事件源text1注册
+	    mainJFrame.add(text1);
+	    labl2=new JLabel("输入浮点数:");
+	    mainJFrame.add(labl2);
+	    text2=new JTextField("0.0",10);
+	    text2.addActionListener(mainJFrame); //把监听者mainJFrame向事件源text2注册
+	    mainJFrame.add(text2);
+	    showlb1.setForeground(Color.blue);
+	    showlb1.setHorizontalTextPosition(SwingConstants.LEFT);
+	    showlb2.setForeground(Color.green);
+	    showlb2.setHorizontalTextPosition(SwingConstants.LEFT);
+	    mainJFrame.add(showlb1);
+	    mainJFrame.add(showlb2);
+	    mainJFrame.setVisible(true);
+	}
+    public void actionPerformed(ActionEvent e){  //事件发生时的处理操作
+       //提取文本框内容并显示在showlb1、showlb2中
+	    showlb1.setText("整数为 "+text1.getText());
+	    showlb2.setText("浮点数为"+text2.getText());
+
+	}
+}
+

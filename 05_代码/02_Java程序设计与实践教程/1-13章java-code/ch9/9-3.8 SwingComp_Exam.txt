@@ -1,0 +1,240 @@
+﻿import java.awt.*;
+//import java.awt.event.*;
+import javax.swing.*;
+
+ 
+public class SwingComp_Exam extends JFrame implements ItemListener{
+
+	static Exam mainJFrame = new Exam();
+	//复选框组件
+	static JCheckBox chk1=new JCheckBox("常规",true);
+	static JCheckBox chk2=new JCheckBox("粗体");
+	static JCheckBox chk3=new JCheckBox("斜体");
+	static JRadioButton rdobtn_g1=new JRadioButton("红色",true);
+	static JRadioButton rdobtn_g2=new JRadioButton("绿色");
+	static JRadioButton rdobtn_g3=new JRadioButton("蓝色");
+	static JTextArea ta1=new JTextArea("选项事件类ItemEvent的使用方法",5,20); 
+	//下拉列表框
+	static String[] cmboxStrings = {"红色", "绿色", "蓝色"};
+	static JComboBox cbx=new JComboBox(cmboxStrings);
+	//菜单组件
+	static JMenuBar mb=new JMenuBar();               //创建JMenuBar对象 mb
+	static JMenu mn1=new JMenu("颜色");              //创建JMenu对象 mn1
+	static JMenu mn2=new JMenu("样式");              /创建JMenu对象 mn2
+	static JMenu mn3=new JMenu("窗口");             //创建JMenu对象 mn3
+	static JMenuItem mi1=new JMenuItem("红色");     //创建JMenuItem对象 mi1
+	static JMenuItem mi2=new JMenuItem("绿色");
+	static JMenuItem mi3=new JMenuItem("蓝色");
+	static JCheckBoxMenuItem cbmi1=new JCheckBoxMenuItem("常规");    //复选框菜单项
+	static JCheckBoxMenuItem cbmi2=new JCheckBoxMenuItem("粗体");    //复选框菜单项
+	static JCheckBoxMenuItem cbmi3=new JCheckBoxMenuItem("斜体");  //复选框菜单项
+	static JMenuItem mi4=new JMenuItem("关闭");
+	static JPopupMenu pm=new JPopupMenu("弹出式菜单");     //创建弹出式菜单
+	static JMenuItem Pop_m1, Pop_m2, Pop_m3;              //弹出菜单项
+
+	public static void main(String args[ ]){
+		mainJFrame.setTitle("常用Swing组件综合应用");
+		mainJFrame.setBounds(150,150,350,300);
+		mainJFrame.setResizable(false);
+		GridBagLayout gridbag=new GridBagLayout();
+		GridBagConstraints constraints=new GridBagConstraints();
+		mainJFrame.getContentPane().setLayout(gridbag);
+		mainJFrame.setFont(new Font("Helvetica",Font.PLAIN,16));
+constraints.fill=GridBagConstraints.NONE;
+constraints.anchor=constraints.NORTHWEST;
+
+constraints.weightx=1;
+constraints.gridwidth=1;
+JLabel labl1=new JLabel("设置文本样式：");
+gridbag.setConstraints(labl1,constraints);
+mainJFrame.add(labl1);
+
+constraints.weightx=1;
+constraints.gridwidth=1;
+ButtonGroup grp=new ButtonGroup();
+grp.add(rdobtn_g1);
+grp.add(rdobtn_g2);
+grp.add(rdobtn_g3);
+//把事件监听者mainJFrame向chk1、chk2、chk3注册
+chk1.addItemListener(mainJFrame);  
+chk2.addItemListener(mainJFrame);   
+chk3.addItemListener(mainJFrame);   
+//设置内部类对象为rdobtn_g1、rdobtn_g2、rdobtn_g3注册
+rdobtn_g1.addItemListener(new MyRdobtnItemListener());  
+rdobtn_g2.addItemListener(new MyRdobtnItemListener());  
+rdobtn_g3.addItemListener(new MyRdobtnItemListener()); 
+gridbag.setConstraints(chk1,constraints);
+mainJFrame.add(chk1);                  
+gridbag.setConstraints(chk2,constraints);
+mainJFrame.add(chk2);		
+constraints.gridwidth=GridBagConstraints.REMAINDER;
+gridbag.setConstraints(chk3,constraints);
+mainJFrame.add(chk3);
+
+constraints.weightx=1;
+constraints.gridwidth=1;
+JLabel labl2=new JLabel("设置文本颜色：");
+gridbag.setConstraints(labl2,constraints);
+mainJFrame.add(labl2);
+    
+constraints.weightx=1;
+constraints.gridwidth=1;
+gridbag.setConstraints(rdobtn_g1,constraints);
+mainJFrame.add(rdobtn_g1);
+gridbag.setConstraints(rdobtn_g2,constraints);
+mainJFrame.add(rdobtn_g2);
+constraints.gridwidth=GridBagConstraints.REMAINDER;
+gridbag.setConstraints(rdobtn_g3,constraints);
+mainJFrame.add(rdobtn_g3);
+
+constraints.weightx=1;
+constraints.gridwidth=1;
+JLabel labl3=new JLabel("设置背景颜色：");
+gridbag.setConstraints(labl3,constraints);
+mainJFrame.add(labl3); 
+cbx.setSelectedIndex(1);
+cbx.addItemListener(new MyChombItemListener());     //设置内部类对象为cbx的监听者
+
+constraints.gridwidth=GridBagConstraints.REMAINDER;
+gridbag.setConstraints(cbx,constraints);
+mainJFrame.add(cbx);
+
+constraints.weightx=1;
+constraints.gridwidth=1;
+JLabel labl4=new JLabel("设置后效果:");
+gridbag.setConstraints(labl4,constraints);
+mainJFrame.add(labl4);
+//初始化文本区ta1的属性
+ta1.setLineWrap(true);
+ta1.setCaretPosition(ta1.getDocument().getLength());
+ta1.setBackground(Color.green);
+ta1.setForeground(Color.RED);
+JScrollPane scrollPane = new JScrollPane(ta1);
+scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+constraints.weightx=1;
+constraints.gridwidth=GridBagConstraints.REMAINDER;;
+gridbag.setConstraints(scrollPane,constraints);
+mainJFrame.add(scrollPane);
+//菜单设计
+	mb.add(mn1);              //将mn1加入mb中
+	mb.add(mn2);
+	mb.add(mn3);
+	mn1.addSeparator();             //加一分隔线
+	mn1.add(mi1);                  //将mi1加入到mn1中
+	mn1.add(mi2);
+	mn1.add(mi3);
+	mn1.addSeparator();  
+	mn2.addSeparator();  
+	mn2.add(cbmi1);                //添加带复选框的菜单项
+	cbmi1.setState(true);
+	mn2.add(cbmi2);       
+	mn2.add(cbmi3);         
+	mn2.addSeparator();  
+	mn3.addSeparator();  
+		mn3.add(mi4);                  // 将mi4加入到mn2中
+		mn3.addSeparator();  
+		mainJFrame.setJMenuBar(mb);   //设置mainJFrame的菜单栏为mb
+		Pop_m1=new JMenuItem("红色");
+		Pop_m2=new JMenuItem("绿色");
+		Pop_m3=new JMenuItem("蓝色");
+		pm.add(Pop_m1);              //向弹出式菜单中添加菜单项
+		pm.add(Pop_m2);
+		pm.add(Pop_m3);
+		//设置内部类为弹出菜单项的监听者
+		Pop_m1.addActionListener(new MyJMenuActionListener());
+		Pop_m2.addActionListener(new MyJMenuActionListener());
+		Pop_m3.addActionListener(new MyJMenuActionListener());
+		mainJFrame.add(pm);                //将弹出式菜单附加在mainJFrame上
+		ta1.addMouseListener(new MyJMenuMouseListener());  //设置内部类为ta1的监听者
+		mi1.addActionListener(new MyJMenuActionListener());  
+		mi2.addActionListener(new MyJMenuActionListener());
+		mi3.addActionListener(new MyJMenuActionListener());
+		cbmi1.addItemListener(new MyJMenuCbItemListener());
+cbmi2.addItemListener(new MyJMenuCbItemListener());
+cbmi3.addItemListener(new MyJMenuCbItemListener());
+		mi4.addActionListener(new MyJMenuActionListener());
+		
+		mainJFrame.setVisible(true);
+	}
+//复选框选项事件类处理程序
+public void itemStateChanged(ItemEvent e){    //事件发生时的处理操作
+	 	JCheckBox chk=(JCheckBox)e.getSource();   //获得事件源并强制将其转换成JCheckBox类型
+	 	Font font1=ta1.getFont();
+	 	int style1=0;
+	 	if((chk==chk1)|| (chk==chk2)|| (chk==chk3))
+	 	{	if(chk1.isSelected())  style1=style1+Font.PLAIN;
+	 	   	if(chk2.isSelected())  style1=style1+Font.BOLD;
+	 		if(chk3.isSelected())  style1=style1+Font.ITALIC;	
+	 	  	ta1.setFont(new Font(font1.getName(),style1,font1.getSize()));
+	 		ta1.append("\nstyle="+style1+" "+chk.getText()+" "+chk.isSelected());
+	 	} 
+	 	cbmi1.setState(chk1.isSelected());//修改菜单选项
+	 	cbmi2.setState(chk2.isSelected());	 	
+	 	cbmi3.setState(chk3.isSelected());	
+	 	  
+	}
+	//单选框事件处理程序
+	static class MyRdobtnItemListener implements ItemListener{
+	    public void itemStateChanged(ItemEvent e)  {
+	       //获得事件源并强制将其转换成JRadioButton类型
+JRadioButton rdbtn=(JRadioButton)e.getSource();   
+Font font1=ta1.getFont();
+int style1=0;
+if(rdbtn==rdobtn_g1) ta1.setForeground(Color.RED);
+else  if(rdbtn==rdobtn_g2) ta1.setForeground(Color.GREEN);
+else  if(rdbtn==rdobtn_g3) ta1.setForeground(Color.BLUE);
+cbmi1.setState(chk1.isSelected());  //修改菜单选项 
+cbmi2.setState(chk2.isSelected());	 	
+cbmi3.setState(chk3.isSelected());	
+	    }
+	}
+	//下拉列表框事件处理程序
+	static class MyChombItemListener implements ItemListener{
+	  	public void itemStateChanged(ItemEvent e) {      //处理单击事件的程序代码
+String clr=(String)cbx.getSelectedItem();     //取得被选中选项的名称
+if (clr=="红色") ta1.setBackground(Color.RED);
+else if (clr=="绿色") ta1.setBackground(Color.GREEN);
+else if (clr=="蓝色") ta1.setBackground(Color.BLUE);
+mainJFrame.setTitle("您选择了["+clr+"]颜色");   //设置窗口的标题
+ta1.setText(clr);
+	 	}
+	 }
+	 //菜单栏事件处理
+	 static class MyJMenuActionListener implements ActionListener{
+	 	public void actionPerformed(ActionEvent e) {   //处理事件的程序代码
+JMenuItem mi=(JMenuItem)e.getSource();      //取得引发事件的对象
+String miLab=mi.getText();                  //取得菜单项的文字标题
+if (miLab =="红色") ta1.setBackground(Color.RED);
+else if (miLab =="绿色") ta1.setBackground(Color.GREEN);
+else if (miLab =="蓝色") ta1.setBackground(Color.BLUE);
+else if (mi ==mi4) mainJFrame.dispose();                  //关闭窗口，释放资源
+mainJFrame.setTitle("设置文字颜色为["+ miLab +"]颜色");   //设置窗口的标题
+cbx.setSelectedItem((Object)miLab);    //修改下拉列表选项
+	 	}
+	}
+    //处理复选框菜单项事件的程序代码
+	static class MyJMenuCbItemListener implements ItemListener {
+	  	public void itemStateChanged(ItemEvent e) {  
+boolean yn1=cbmi1.getState();
+boolean yn2=cbmi2.getState();
+boolean yn3=cbmi3.getState();
+int state=0;
+if (yn1) state= Font.PLAIN;
+if (yn2) state= state+Font.BOLD;
+if (yn3) state=state+Font.ITALIC;	 		
+if (yn1||yn2||yn3)ta1.setFont(new Font("楷体_GB2312",state,15));
+else ta1.setFont(new Font("宋体",Font.PLAIN,15));
+chk1.setSelected(cbmi1.getState());   //修改复选框选项 
+chk2.setSelected(cbmi2.getState());
+chk3.setSelected(cbmi3.getState());
+	 	}
+	}  
+//文本区鼠标事件处理程序
+static class MyJMenuMouseListener extends MouseAdapter{
+	    public void mouseReleased(MouseEvent mce) {    //释放鼠标时触发的事件
+if(mce.isPopupTrigger())                   //判断鼠标事件是否是由弹出菜单引发
+pm.show((Component)mce.getSource(),mce.getX(),mce.getY());
+	 	}
+}
+}

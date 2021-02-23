@@ -1,0 +1,18 @@
+import  java.io.*;   //导入所需要的公用类
+public class InputTest	{
+	public static void main(String args[]) {  
+		final  int  MAX_NUM=50;  //定义标识符常量MAX_NUM=50
+		//下面7行语句的作用是从键盘输入一个整数并存放到变量x中
+		InputStreamReader  ir;
+		BufferedReader  in;
+		ir=new  InputStreamReader(System.in);
+		in=new  BufferedReader(ir);
+		System.out.println(“Input x is:”);
+		String  s=in.readLine();
+		int  x=Integer.parseInt(s);
+		//下面用if结构判断x的值是否小于MAX_NUM
+		if  (x<MAX_NUM)	{
+		  System.out.println(“x=”+x);
+		}
+	}
+}

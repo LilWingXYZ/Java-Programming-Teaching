@@ -1,0 +1,20 @@
+﻿import javax.swing.*;            
+//加载javax.swing类库里的所有类
+public class JFrame_Exam extends JFrame {
+	  public static void main(String args[]) {
+	        JFrame_Exam mainJFrame = new JFrame_Exam(); 
+	        mainJFrame.setTitle("JFrame框架示例!");        //创建一个JFrame并设置标题
+	        mainJFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );//设置关闭动作
+         	mainJFrame.setSize(300,300);             //设置JFrame的大小，缺省为（0，0）
+    		mainJFrame.setBackground(Color.green);   //设置JFrame的背景，缺省为绿色
+    		mainJFrame.setLocation(150,150);        //设置JFrame窗口的位置
+		mainJFrame.setLocationRelativeTo(null);  //使窗口显示在屏幕中央
+  
+ 		JLabel lbl=new JLabel("大家好！我是一个标签");
+    		JButton btn=new JButton("按钮");
+		mainJFrame.getContentPane().add(lbl);  //将标签对象lbl加入到JRootPane中
+		mainJFrame.getContentPane().add(btn); //将按钮对象btn加入到JRootPane中
+   
+    		mainJFrame.setVisible(true);  //设置JFrame为可见，缺省为不可见
+	  }
+}

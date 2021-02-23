@@ -1,0 +1,33 @@
+package ch7;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class CurrentDate_2 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Date date = new Date();
+		long longtime = date.getTime();
+		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		SimpleDateFormat format3 = new SimpleDateFormat("yyyyƒÍMM‘¬dd»’");
+		SimpleDateFormat format4 = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat format5 = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat format6 = new SimpleDateFormat("yyyy-MM");
+		SimpleDateFormat format7 = new SimpleDateFormat("yyyy");
+
+		System.out.println(format1.format(longtime));
+		System.out.println(format2.format(longtime));
+		System.out.println(format3.format(longtime));
+		System.out.println(format4.format(longtime));
+		System.out.println(format5.format(longtime));
+		System.out.println(format6.format(longtime));
+		System.out.println(format7.format(longtime));
+		
+	}
+
+}

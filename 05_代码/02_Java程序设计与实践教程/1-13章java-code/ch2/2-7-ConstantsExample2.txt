@@ -1,0 +1,8 @@
+public class ConstantsExample2{ 
+   public static final double M=2.54;
+   public static void main(String args[]) {
+	double  width=8.5;
+	double  height=11;
+	System.out.println("paper  size  in centimeters:" +width*M +"by" +height*M);
+   }
+} 

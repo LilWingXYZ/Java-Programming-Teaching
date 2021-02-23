@@ -1,0 +1,69 @@
+package ch5;
+
+import java.io.*;
+
+public class Cust5 {
+	private String name;
+	private int ID;
+	String PWD;
+	private int money;
+	static String bankName="建设银行";
+	private int selfNum=0;
+	static int allNum=0;
+
+	Cust5(String newName,int newID,String newPWD,int newmoney)
+	{
+		name = newName;
+		ID = newID;
+		PWD = newPWD;
+		money = newmoney;
+		allNum++;
+		selfNum=allNum;
+	}
+	void getMoney()
+	{
+		System.out.print("请输入要取出的钱数：");
+		int n = Integer.parseInt(KB.scan());	
+		money = money-n;
+	}
+	void saveMoney()
+	{
+		System.out.print("请输入要储蓄的钱数：");
+		int n = Integer.parseInt(KB.scan());
+		money = money+n;
+	}
+	void search()
+	{
+		System.out.println("所属银行:"+Cust5.bankName);
+		System.out.println("您是本银行的"+allNum+"个顾客中的第"+selfNum+"个顾客");
+		System.out.println("用户姓名："+name);
+		System.out.println("用户账号："+ID);
+		System.out.println("账户余额："+money);
+	}
+	void changePWD()
+	{
+		System.out.print("请输入用户密码：");
+		String p=KB.scan();
+		PWD=p;
+	}
+	int getID()
+	{
+		return ID;
+	}
+}
+class KB 
+{
+	public static String scan()
+	{
+		String str = "";
+		try
+		{
+			BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
+			str = buf.readLine();
+		}
+		catch (Exception e)
+		{
+		}
+		return str;
+	}
+}

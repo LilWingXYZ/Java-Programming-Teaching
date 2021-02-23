@@ -1,0 +1,19 @@
+import java.io.File;
+import java.io.IOException;
+
+public class CharInput2
+{
+	public static void main(String[] args) throws IOException
+	{
+		byte buffer[]=new byte[255];
+		try{
+		 	System.in.read(buffer,0,255);
+		}catch(java.io.IOException e){
+			System.out.println("Error"+e.toString());
+		}
+		System.out.println("你刚才输入的一行字符为：");
+		String inputstr=new String(buffer);
+		System.out.println(inputstr);
+	}
+
+}

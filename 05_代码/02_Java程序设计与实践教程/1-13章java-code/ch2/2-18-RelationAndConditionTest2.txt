@@ -1,0 +1,21 @@
+public class  RelationAndConditionTest2{
+  public static void main(string args[]) {
+    int  x=3;
+    int  y=6;
+    boolean z;
+    if(x==y)
+        z=true;
+    else  z=false;         //z=false
+    System.out.println("x="+x);
+    System.out.println("y="+y);
+    System.out.println("x==y="+z);
+    double  w=0.3e-15;
+    //如果w=0，则||左边表达式值为真，右边不会再计算，不会出现"被零除"错误
+    if(w==0 || (x+y)/w >= double.max_value)
+       //商无穷大或超出最大值时显示”运算结果溢出!”
+       System.out.println("运算结果溢出！");
+     
+   else //分母不为0并且商没有发生溢出时输出表达式的值
+      System.out.println("运算结果溢出!");
+   }
+}

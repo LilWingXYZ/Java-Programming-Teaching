@@ -1,0 +1,34 @@
+//服务器端ServerSocket程序：drawing.java
+// ==================== Program Discription ==========================
+// 程序名称： drawing.java
+// 程序目的：TCP服务器端 Socket编程
+// ===================================================================
+package drawing;
+import java.net.*;
+//建立Drawing类，继承Frame类
+public class Drawing extends Draw{
+ 	ReadThread read;
+	public Drawing(){ 
+		super();
+          	this.setTitle("服务器端");
+     	}
+    	 //显示Drawing
+   	public static void main(String[] args){
+        	Drawing dr=new Drawing();
+  		dr.show();
+		//生成服务器端的Socket,启动Socket服务
+   		try {
+     			ServerSocket server = new ServerSocket(8189);
+     for(;;){
+      Socket socket=server.accept();
+      ReadDrawThread readdraw=new ReadDrawThread(socket,dr);
+      WriteDrawThread writedraw = new WriteDrawThread(socket, dr);
+      readdraw.start();
+      writedraw.start();
+       }
+   }
+   catch(Exception ex) {
+     ex.printStackTrace();
+   }
+   }
+}

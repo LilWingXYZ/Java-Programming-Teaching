@@ -1,0 +1,22 @@
+package com.example.login;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+public class Welcome extends Activity {
+	private TextView tvName;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_welcome);
+		/*获得Activity传输过来的值*/
+		/*getIntent将该项目中包含的原始intent检索出来，将检索出来的intent赋值
+		给一个Intent类型的变量intent  */
+		Intent intent=getIntent(); 
+		Bundle bundle=intent.getExtras();//.getExtras()得到intent所附带的额外数据  
+		String str=bundle.getString("name");//getString()返回指定name的值   
+		tvName=(TextView)findViewById(R.id.textView1);//用TextView显示值  
+		tvName.setText("欢迎用户： "+str);  
+	}
+}

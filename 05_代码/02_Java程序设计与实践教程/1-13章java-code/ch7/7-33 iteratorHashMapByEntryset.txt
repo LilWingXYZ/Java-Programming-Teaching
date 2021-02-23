@@ -1,0 +1,18 @@
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+public class iteratorHashMapByEntryset{
+	public static void main(String[] args){
+		Map<String, String> cities = new HashMap<String, String>();
+		cities.put("BJ", "北京");
+		cities.put("SH", "上海");
+		cities.put("GZ", "广州");
+		Iterator iter = cities.entrySet().iterator();
+		while(iter.hasNext()) {
+			Map.Entry entry = (Map.Entry)iter.next();
+			String key = (String)entry.getKey();
+			String value = (String)entry.getValue();
+			System.out.println(key+" -- "+value);
+		}
+	}
+}

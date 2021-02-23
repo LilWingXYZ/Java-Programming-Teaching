@@ -1,0 +1,19 @@
+public class StaticDemo {
+	   static double pi=3.14; //静态变量,类变量
+	   double pix=3.14;        //实例变量,对象变量 
+    double  getArea(){     //实例方法
+   	//类变量,实例方法能用类变量
+      return pi*3*3; 
+    }    
+    static double getArea1(){
+    	return pi*3*3;          //类方法能用类变量
+    }
+    double  getArea2(){
+    	//实例方法能用实例变量
+      return pix*3*3; 
+    }
+    //static double getArea3(){
+   	//return pix*3*3;   
+      //类方法不能用实例变量
+      //  }
+}

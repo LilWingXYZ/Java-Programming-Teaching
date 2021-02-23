@@ -1,0 +1,43 @@
+package ch5;
+
+class Cust1{
+	String name;
+	int ID;
+	String PWD;
+	int money;
+
+	public Cust1(String newName,int newID,String newPWD,int newmoney){
+		name = newName;
+		ID = newID;
+		PWD = newPWD;
+		money = newmoney;
+	}
+	public Cust1() {
+		// TODO Auto-generated constructor stub
+	}
+	void getMoney(int getMoney){
+		money = this.money - getMoney;
+		this.search();
+	}
+	void setMoney(int saveMoney){
+		money = this.money + saveMoney;
+	}
+	void search(){
+		System.out.println("用户姓名："+name);
+		System.out.println("用户账号："+ID);
+		System.out.println("账户余额："+money);
+	}
+	void changePWD(String newPWD){
+		PWD = newPWD;
+	}
+}
+public class MainDemo{
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+    	 	Cust1 myCust1=new Cust1("Tom",100,"111111",10000);
+     		myCust1.setMoney(5000);
+     		myCust1.getMoney(3000);
+    		myCust1.changePWD("TOM");   
+     		myCust1.search();     
+	}
+}

@@ -1,0 +1,9 @@
+public class RuntimeDemo{
+	public static void main(String[] args) throws Exception{
+		Runtime rt = Runtime.getRuntime();
+		System.out.println("处理器数量：" + rt.availableProcessors()+" byte");
+		System.out.println("JVM总内存数 ："+ rt.totalMemory()+" byte");
+		System.out.println("JVM空闲内存数： "+ rt.freeMemory()+" byte");
+		System.out.println("JVM可用最大内存数： "+ rt.maxMemory()+" byte");
+	}
+}

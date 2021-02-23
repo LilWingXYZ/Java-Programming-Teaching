@@ -1,0 +1,42 @@
+package ch3;
+
+import java.io.*;
+
+public class SalesTest {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 */
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		 int  task=30;     //销售任务
+	     int  bonus;      //红利
+		  //从键盘输入实际完成的销售值存放到变量yourSales中
+	     InputStreamReader   ir;
+	     BufferedReader  in;
+	     ir=new  InputStreamReader(System.in);
+	     in=new  BufferedReader(ir);
+	     System.out.println("Input your Sales is: ");
+	     String  s=in.readLine();
+	     int  yourSales=Integer.parseInt(s);
+		  //用if-else if结构判断yourSales的大小，决定红利多少并输出不同的信息
+	     if (yourSales>=2*task) {    //实际销售值达到或超出销售任务的2倍
+	        bonus=1000;
+	     System.out.println("Excellent! bonus="+bonus);
+	   }
+	   else if (yourSales>=1.5*task) {    //达到或超出1.5倍，但小于2倍
+	      bonus=500;
+	      System.out.println("Fine! bonus="+bonus);
+	      		
+	   }
+	  else if (yourSales>=task) {       //达到或超出销售任务，但小于1.5倍
+	      bonus=100;
+	      System.out.println("Satisfactory! bonus="+bonus);
+	   }
+	   else {             //未完成销售任务 
+	      System.out.println("You’re fired");
+	   }
+	}
+
+}

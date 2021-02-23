@@ -1,0 +1,21 @@
+package ch7;
+
+public class StrBufferSet {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		StringBuffer s1=new StringBuffer( );
+	    s1.append("Hello,Java!");
+	    System.out.println("s1=" +s1);
+	    StringBuffer s2=new StringBuffer(10 );
+	    s2.insert(0, "Hello,Java!");
+	    System.out.println("s2="+s2);
+	    StringBuffer s3=new StringBuffer("Hello,Java!");
+	    System.out.println("s3="+s3);
+
+	}
+
+}

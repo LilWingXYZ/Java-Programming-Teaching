@@ -1,0 +1,36 @@
+//以下程序段为多线程部分
+// ==================== Program Discription ========================
+// 程序名称：ReadThread.java
+// 程序目的：读取Socket中字符串的线程
+// ==============================================================
+package drawing;
+import java.net.*;
+import java.io.*;
+public class ReadThread extends Thread {
+  private Socket socket;
+  public Draw dr;
+  public ReadThread(Socket socket,Draw dr) {
+    this.socket=socket;
+    this.dr=dr;
+  }
+  public void run(){
+    try {
+      BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+      while(true){
+        System.out.println("begin receive");
+        String receive = in.readLine();
+        String[] result = receive.split(",");
+        for (int i=0;i<result.length;i++){
+          System.out.print(result[i]+"|");
+        }
+        System.out.println("");
+        if(result[0].equals("text")){
+         System.out.println("begin receive text result="+result[1]);
+          dr.lst.add(result[1]);}
+     }
+    }
+    catch (Exception ex) {
+      ex.printStackTrace();
+     }
+}
+}

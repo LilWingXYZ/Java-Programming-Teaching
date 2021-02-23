@@ -1,0 +1,16 @@
+package ch7;
+
+import java.util.ArrayList;
+public class ListDemo {
+	public static void main(String[] args){
+		ArrayList list = new ArrayList();
+		for( int i=0;i<10;i++ ) //给数组增加10个Int元素
+		  list.add(i); 
+		list.remove(5);//将第6个元素移除
+		for( int i=0;i<3;i++ ) //再增加3个元素
+	      list.add(i);
+		Integer[] al=(Integer[])list.toArray(new Integer[List.size()]);
+		for(int i=0;i<al.length;i++)
+		  System.out.print(al[i]+"  ");
+	    }
+}

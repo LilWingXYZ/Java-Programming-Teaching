@@ -1,0 +1,16 @@
+public class  RelationAndConditionTest3{
+      public static void main(string args[]) {
+	int  x=3;
+	int  y=6;
+	boolean  w=true;
+	boolean  z=x<0||x<y&&x>0;
+	boolean  u=!w||x<0;
+	boolean  v=!w&&y>0;
+	System.out.println("x="+x);
+	System.out.println("y="+y);
+	System.out.println("z="+z);
+	System.out.println("w="+w);
+	System.out.println("u="+u);
+	System.out.println("v="+v);
+    }
+}

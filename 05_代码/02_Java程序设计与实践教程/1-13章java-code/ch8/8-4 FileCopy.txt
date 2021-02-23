@@ -1,0 +1,31 @@
+import java.io.*;
+public class FileCopy {
+	public static void main(String[] args) throws IOException {
+	   try{
+		// 创建文件输出字节流。
+		FileOutputStream fos1 = new FileOutputStream("file.txt");
+		int b;
+		System.out.println("请输入字符串：");
+		while ((b = System.in.read()) != '\n')
+			fos1.write(b);
+		// 关闭流。
+		fos1.close();
+		
+		FileInputStream fis = new FileInputStream("file1.txt");
+		FileOutputStream fos = new FileOutputStream("file2.txt");
+		int c;
+		
+		// 读写文件流中的数据。
+		while ((c = fis.read()) != -1)
+			fos.write(c);
+		// 关闭流。
+		fis.close();
+		fos.close();
+		System.out.println("成功保存并复制！");
+            }catch(FileNotFoundException e){
+		System.out.println("FileStream Test:"+e);
+	    }catch(IOException e){
+		System.out.println("FileStream Test:"+e);
+	    }
+	}
+}

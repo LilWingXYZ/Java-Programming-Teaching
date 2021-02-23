@@ -1,0 +1,20 @@
+package HashMap;
+import java.util.HashMap;
+import java.util.Map;
+public class HashMapDemo{
+	public static void main(String[] args) {
+		Map<String, String> cities = new HashMap<String, String>();
+		cities.put("BJ", "北京");
+		cities.put("SH", "上海");
+		cities.put("GZ", "广州");
+		cities.put("SZ", "深圳");
+		String city = (String) cities.get("BJ");
+		System.out.println("BJ对应的城市是：" + city);
+		System.out.println("Map中共有"+cities.size()+"组数据");
+		cities.remove("GZ");
+		System.out.println("Map中包含GZ的key吗？" + cities.containsKey("GZ"));
+		System.out.println( cities.keySet() ) ;
+		System.out.println( cities.values() );
+		System.out.println( cities );
+	}
+}

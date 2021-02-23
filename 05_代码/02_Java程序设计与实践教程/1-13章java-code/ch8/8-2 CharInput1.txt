@@ -1,0 +1,19 @@
+import java.io.File;
+import java.io.IOException;
+
+public class CharInput1
+{
+	public static void main(String[] args) throws IOException
+	{
+		int a;;
+		try{
+		 	System.out.println("请输入一个字符：");
+			a=System.in.read();
+			System.out.println("你输入的字符是："+(char)a);
+			
+		}catch(java.io.IOException e){
+			System.out.println("Error"+e.toString());
+		}
+	}
+
+}

@@ -1,0 +1,22 @@
+package ch7;
+
+import java.util.*;
+public class ListIteratorDemo {
+	public static void main(String[] args) {
+		List list = new ArrayList();
+		list.add("one");
+		list.add("second");
+		list.add("third");
+		list.add(new Integer(4));
+		list.add(new Float(5.0F));
+		list.add("second"); // true
+		list.add(new Integer(4)); // true
+		ListIterator iterator = list.listIterator();
+		System.out.print("向下迭代容器里的数据：");
+		while (iterator.hasNext())
+		  System.out.print(iterator.next()+"\t");
+		System.out.print("\n向上迭代容器里的数据：");
+		while (iterator.hasPrevious())
+		  System.out.print(iterator.previous()+"\t");
+	    }
+}

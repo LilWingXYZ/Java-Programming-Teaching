@@ -1,0 +1,105 @@
+package ch6;
+
+import java.io.*;
+
+public class Cust1 {
+	String name;
+	int ID;
+	String PWD;
+	int money;
+	
+	Cust1(String newName,int newID,String newPWD,int newmoney)
+	{
+		name = newName;
+		ID = newID;
+		PWD = newPWD;
+		money = newmoney;
+	}
+	void getMoney()
+	{
+		System.out.print("请输入要取出的钱数：");
+		int n = Integer.parseInt(KB1.scan());	
+		if(n>=money)
+			System.out.print("不能透支！");
+		else	money = money-n;
+	}
+	boolean getMoney(int n)
+	{
+		if(n>=money)
+		{
+			System.out.print("不能透支！");
+			return false;
+		}
+		else{
+			money = money-n;
+			return true;
+		}
+  	}
+	void saveMoney()
+	{
+		System.out.print("请输入要储蓄的钱数：");
+		int n = Integer.parseInt(KB1.scan());
+		money = money+n;
+	}
+	void saveMoney(int n)
+	{
+		money = money+n;
+	}
+	void search()
+	{
+		System.out.println("用户姓名："+name);
+		System.out.println("用户账号："+ID);
+		System.out.println("账户余额："+money);
+	}
+	void changePWD()
+	{
+		System.out.print("请输入用户密码：");
+		String p=KB1.scan();
+		PWD=p;
+	}
+	boolean  checkPWD()
+	{
+		System.out.print("请输入用户密码：");
+        for(int i=0;i<3;i++){
+	      String p=KB1.scan();
+          if(p.equals(this.PWD)) {
+        	  return true;
+          }
+          else
+          {
+        	  System.out.print("密码错误，请重新输入");
+          }
+        }
+		return false;
+	}
+    void run()
+    {
+    	if(checkPWD()==false){
+         	System.out.print("密码错误三次，欢迎下次输入");
+         	return;  		
+    	}
+    	boolean flag=true;
+    	while(flag){
+    		System.out.print("*******************\n");
+    		System.out.print("存钱请按\t1\n");
+			System.out.print("取钱请按\t2\n");
+			System.out.print("修改密码请按\t3 \n");
+			System.out.print("查询请按\t4 \n ");
+			System.out.print("退出请按\t5\n");
+			System.out.print("*******************\n");
+		    int n=Integer.parseInt(KB1.scan());
+			switch (n)
+			{
+			case 1:saveMoney();	break;
+			case 2:getMoney();  break;
+			case 3:changePWD();	break;
+			case 4:search();	break;
+			case 5:flag=false;  break;
+			}
+		}
+    }
+	int getID()
+	{
+		return ID;
+	}
+}

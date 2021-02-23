@@ -1,0 +1,43 @@
+//写入线程：WriteDrawThread.java
+// ==================== Program Discription ========================
+// 程序名称：WriteDrawThread.java
+// 程序目的： 向Socket中写DrawObject对象的线程,DrawObject对象放在Vector中
+//==============================================================
+package drawing;
+import java.net.*;
+import java.io.*;
+public class WriteDrawThread extends Thread {
+  private Socket socket;
+  private Draw dr;
+  private DrawObject wo;
+  public WriteDrawThread(Socket socket,Draw dr) {
+    this.socket=socket;
+    this.dr=dr;
+  }
+  public void run(){
+    try {
+     PrintWriter out=new PrintWriter(socket.getOutputStream(), true);
+     while (true){
+      if(dr.enddraw) {
+         System.out.println("begin send graphic");
+         String send ="graphic"+","+dr.sendobject.startPoint.x +","+
+         dr.sendobject.startPoint.y+","+dr.sendobject.endPoint.x+","
+         +dr.sendobject.endPoint.y+","+dr.sendobject.type;
+        out.println(send);
+        dr.enddraw=false;
+           }
+      if(dr.end) {
+        System.out.println("begin send text");
+        String send ="text"+","+dr.mes.getText();
+        dr.lst.add(dr.mes.getText());
+        out.println(send);
+        dr.end=false;
+        }
+
+      }//while
+    }//try
+   catch (Exception ex) {
+     ex.printStackTrace();
+    }
+}
+}

@@ -1,0 +1,46 @@
+package ch6;
+class Human{
+	String name;
+	int age;
+	Human(){
+		
+	}
+    Human(String name,int age){
+		this.name=name;
+		this.age=age;
+	}
+    void walk(){
+    	System.out.println("慢慢走。。");
+    }
+}
+class Child extends Human{
+	String schoolName;
+	Child(String name,int age,String schoolName){
+		super(name,age);
+		this.schoolName=schoolName;
+	}
+	void study(){
+	   	System.out.println(name+"写数学作业");
+	    		
+	}
+    void walk(){
+    	System.out.println("蹦蹦跳跳地走。。");
+    }
+}
+public class Demo1{
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Human h=new Human("小明爸爸",35);
+		h.walk();
+		Child c=new Child("小明",8,"实验小学");
+		c.study();
+		c.walk();
+		
+	}
+
+}
